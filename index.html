@@ -4,88 +4,361 @@
   <meta charset="UTF-8" />
   <title>MiTasaYa | Tu mejor tasa, hoy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MiTasaYa muestra el dólar hoy en Colombia. Próximamente: comparación clara para enviar dinero." />
+  <meta name="description" content="MiTasaYa te muestra el dólar hoy y pronto te dirá dónde pagan mejor para enviar dinero a Colombia." />
 
   <style>
+    :root{
+      --bg:#070b16;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.12);
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,.72);
+      --line: rgba(255,255,255,.14);
+      --shadow: 0 24px 70px rgba(0,0,0,.5);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#f3f4f6;
-      color:#111827;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 12% 10%, rgba(56,189,248,.22), transparent 62%),
+        radial-gradient(900px 520px at 88% 18%, rgba(167,139,250,.20), transparent 62%),
+        radial-gradient(900px 520px at 50% 95%, rgba(34,197,94,.10), transparent 60%),
+        linear-gradient(180deg, #060914, #070b16);
     }
+
+    a{ color: #a5b4fc; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
     .wrap{
-      max-width: 720px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 32px 16px;
+      padding: 26px 16px 42px 16px;
     }
 
-    h1{
-      margin:0 0 18px 0;
-      font-size:22px;
-      font-weight:600;
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
+    }
+
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(56,189,248,1), rgba(167,139,250,1));
+      box-shadow: 0 14px 35px rgba(56,189,248,.18);
+      flex: 0 0 auto;
+    }
+
+    .brandTitle{
+      display:flex;
+      flex-direction:column;
+      min-width: 0;
+    }
+
+    .brandTitle h1{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brandTitle p{
+      margin:2px 0 0 0;
+      font-size:12px;
+      color: var(--muted);
+    }
+
+    .pill{
+      font-size:12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding: 8px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .hero{
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h2{
+      margin:0 0 8px 0;
+      font-size:26px;
+      line-height: 1.1;
+    }
+
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      max-width: 70ch;
+      line-height: 1.5;
+      font-size:14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
     }
 
     .card{
-      background:#ffffff;
-      border:1px solid #e5e7eb;
-      border-radius:16px;
-      padding:18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
     }
 
-    .title{
-      margin:0 0 12px 0;
+    .card h3{
+      margin:0 0 10px 0;
       font-size:14px;
-      font-weight:600;
+      letter-spacing:.2px;
     }
 
+    .rateBox{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .rateValue{
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .rateMeta{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: rgba(234,240,255,.78);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .note{
+      margin: 10px 0 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .btnRow{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn{
+      display:inline-block;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(56,189,248,1), rgba(167,139,250,1));
+      color: #081022;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      text-decoration:none;
+      box-shadow: 0 14px 35px rgba(56,189,248,.14);
+    }
+
+    .btnGhost{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    /* CENTRADO FUERTE PARA WIDGET */
     .widgetCenter{
+      width:100%;
       display:flex;
       justify-content:center;
       align-items:center;
-      width:100%;
       overflow-x:auto;
       padding: 8px 0;
     }
 
+    /* Intento de centrar cualquier cosa que el script meta (tablas, divs, etc.) */
     .widgetCenter *{
       margin-left:auto !important;
       margin-right:auto !important;
-    }
-
-    .widgetCenter table{
-      margin-left:auto !important;
-      margin-right:auto !important;
+      float:none !important;
+      text-align:center !important;
     }
 
     .widgetCenter iframe{
-      display:block;
-      margin:0 auto !important;
+      display:block !important;
+      margin: 0 auto !important;
     }
 
-    .note{
-      margin:12px 0 0 0;
-      font-size:12px;
-      color:#6b7280;
+    .widgetCenter table{
+      margin: 0 auto !important;
+    }
+
+    footer{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap: wrap;
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <h1>MiTasaYa</h1>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brandTitle">
+          <h1>MiTasaYa</h1>
+          <p>Tu mejor tasa, hoy</p>
+        </div>
+      </div>
+      <div class="pill">Próximamente</div>
+    </header>
 
-    <div class="card">
-      <p class="title">Dólar hoy (USD a COP)</p>
+    <section class="hero">
+      <h2>Tu mejor tasa, hoy.</h2>
+      <p>
+        Estamos trabajando para mostrarte de forma clara y simple dónde pagan mejor hoy para enviar dinero a Colombia.
+      </p>
 
-      <div class="widgetCenter">
-        <!-- Widget dólar Colombia (se deja tal cual) -->
-        <script src="https://www.dolar-colombia.com/widget.js"></script>
-        <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
+      <div class="btnRow">
+        <a class="btn" href="#widget">Ver dólar</a>
+        <a class="btn btnGhost" href="#como">Cómo funciona</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <!-- BLOQUE 1: Frankfurter USD->COP (lo que ya estabas usando) -->
+      <div class="card">
+        <h3>Tasa USD a COP</h3>
+
+        <div class="rateBox">
+          <div>
+            <div class="rateValue" id="usdCop">Cargando…</div>
+            <div class="rateMeta" id="updatedAt">Actualizando</div>
+          </div>
+          <div class="mono">Fuente: Frankfurter</div>
+        </div>
+
+        <p class="note">
+          Si esta tasa aparece como no disponible, puede ser un fallo temporal del proveedor.
+        </p>
       </div>
 
-      <p class="note">Se actualiza automáticamente. Valor informativo.</p>
-    </div>
+      <!-- BLOQUE 2: WIDGET DÓLAR COLOMBIA (centrado sí o sí) -->
+      <div class="card" id="widget">
+        <h3>Dólar Colombia</h3>
+
+        <div class="widgetCenter">
+          <!-- Widget dólar Colombia (se mantiene tal cual, solo lo movemos al body para controlarlo) -->
+          <script src="https://www.dolar-colombia.com/widget.js"></script>
+          <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
+        </div>
+
+        <p class="note">Se actualiza automáticamente. Valor informativo.</p>
+      </div>
+    </section>
+
+    <section class="card" id="como" style="margin-top:14px;">
+      <h3>Cómo funciona</h3>
+      <p class="note" style="font-size:13px; margin:0;">
+        En esta etapa, MiTasaYa te muestra el dólar hoy.
+        Próximamente vas a poder comparar opciones para enviar dinero a Colombia, sin enredos.
+      </p>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> MiTasaYa</span>
+      <span class="mono">mitasaya.com</span>
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    async function loadUsdCop() {
+      const el = document.getElementById('usdCop');
+      const updated = document.getElementById('updatedAt');
+
+      try {
+        const url = 'https://api.frankfurter.dev/v1/latest?base=USD&symbols=COP';
+        const r = await fetch(url, { cache: 'no-store' });
+        if (!r.ok) throw new Error('http ' + r.status);
+
+        const data = await r.json();
+        const rate = data && data.rates && data.rates.COP;
+
+        if (!rate) throw new Error('no rate');
+
+        const formatted = new Intl.NumberFormat('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+          maximumFractionDigits: 0
+        }).format(rate);
+
+        el.textContent = formatted;
+        updated.textContent = 'Actualizado: ' + new Date().toLocaleString('es-CO');
+      } catch (e) {
+        el.textContent = 'No disponible';
+        updated.textContent = 'Reintentando…';
+      }
+    }
+
+    loadUsdCop();
+    setInterval(loadUsdCop, 24 * 60 * 60 * 1000);
+  </script>
 </body>
 </html>
