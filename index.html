@@ -1,61 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MiTasaYa | Tu mejor tasa, hoy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MiTasaYa te muestra dónde pagan mejor hoy para enviar dinero a Colombia. Próximamente.">
+  <meta name="description" content="MiTasaYa te muestra el dólar hoy y pronto te dirá dónde te pagan mejor para enviar dinero a Colombia." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --card:#f9fafb;
+      --btn:#111827;
+      --btnText:#ffffff;
+      --radius:16px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .wrap{
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 22px 16px 40px 16px;
+    }
+
+    header{
+      padding: 10px 0 14px 0;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+
+    .tag{
+      font-size:12px;
+      color: var(--muted);
+      background: #f3f4f6;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      white-space: nowrap;
+    }
+
+    nav{
+      display:flex;
+      gap:10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav a{
+      text-decoration:none;
+      color: var(--text);
+      font-size: 13px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+    }
+
+    nav a:focus, nav a:hover{
+      background: #f9fafb;
+    }
+
+    .hero{
+      margin: 18px 0 18px 0;
+      padding: 14px 0;
+    }
+
+    .hero h2{
+      margin:0 0 6px 0;
+      font-size: 22px;
+    }
+
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 60ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 720px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .card h3{
+      margin:0 0 10px 0;
+      font-size: 14px;
+    }
+
+    .note{
+      margin: 10px 0 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .btnRow{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      background: var(--btn);
+      color: var(--btnText);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      border: 1px solid var(--btn);
+    }
+
+    .btnGhost{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    footer{
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap: wrap;
+    }
+
+    .anchor{
+      scroll-margin-top: 14px;
+    }
+  </style>
 
   <!-- Widget dólar Colombia -->
   <script src="https://www.dolar-colombia.com/widget.js"></script>
   <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
 </head>
 
-<body style="font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; background:#ffffff; color:#111; padding:40px; max-width:700px; margin:auto;">
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>MiTasaYa</h1>
+        <div class="tag">Próximamente</div>
+      </div>
 
-  <h1>MiTasaYa</h1>
-  <p><strong>Tu mejor tasa, hoy.</strong></p>
+      <nav aria-label="Navegación">
+        <a href="#dolar">Dólar hoy</a>
+        <a href="#enviar">Enviar dinero</a>
+        <a href="#faq">Ayuda</a>
+      </nav>
+    </header>
 
-  <p id="usdCop" style="font-size:20px; font-weight:bold;">
-    cargando...
-  </p>
+    <section class="hero">
+      <h2>Tu mejor tasa, hoy</h2>
+      <p>
+        Aquí ves el dólar en Colombia. Muy pronto también vas a poder comparar, en un solo lugar,
+        dónde te pagan mejor para enviar dinero.
+      </p>
 
-  <p style="font-size:14px; color:#777;">
-    Se actualiza automáticamente. Valor informativo.
-  </p>
+      <div class="btnRow">
+        <a class="btn" href="#dolar">Ver dólar</a>
+        <a class="btn btnGhost" href="#enviar">Cómo enviar</a>
+      </div>
+    </section>
 
-  <p>
-    Estamos trabajando para mostrarte de forma clara y simple dónde pagan mejor hoy para enviar dinero a Colombia.
-  </p>
+    <section class="grid">
+      <section id="dolar" class="card anchor">
+        <h3>Dólar hoy (USD a COP)</h3>
 
-  <p><em>Próximamente.</em></p>
+        <!-- Aquí el widget se dibuja solo con tus scripts -->
+        <div id="dolar-colombia-widget"></div>
+
+        <p class="note">Se actualiza automáticamente. Valor informativo.</p>
+      </section>
+
+      <section id="enviar" class="card anchor">
+        <h3>Enviar dinero a Colombia</h3>
+        <p class="note" style="font-size:13px; margin:0;">
+          Paso 1: eliges la app o banco.<br/>
+          Paso 2: miras la tasa y las comisiones.<br/>
+          Paso 3: envías y confirmas.
+        </p>
+
+        <p class="note">Pronto: te mostramos las mejores opciones.</p>
+      </section>
+    </section>
+
+    <section id="faq" class="card anchor" style="margin-top:12px;">
+      <h3>Ayuda rápida</h3>
+      <p class="note" style="font-size:13px; margin:0;">
+        Si hoy no carga el valor, puede ser un fallo temporal del proveedor del widget.
+        Intenta recargar la página en unos segundos.
+      </p>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> MiTasaYa</span>
+      <span>mitasaya.com</span>
+    </footer>
+  </div>
 
   <script>
-    async function loadUsdCop() {
-      const el = document.getElementById('usdCop');
-
-      try {
-        const url = 'https://api.frankfurter.dev/v1/latest?base=USD&symbols=COP';
-        const r = await fetch(url, { cache: 'no-store' });
-        if (!r.ok) throw new Error('http ' + r.status);
-
-        const data = await r.json();
-        const rate = data && data.rates && data.rates.COP;
-        if (!rate) throw new Error('missing rate');
-
-        el.innerText = rate.toLocaleString('es-CO', {
-          style: 'currency',
-          currency: 'COP',
-          maximumFractionDigits: 0
-        });
-      } catch (e) {
-        el.innerText = 'no disponible';
-        console.error(e);
-      }
-    }
-
-    loadUsdCop();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
