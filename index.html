@@ -4,135 +4,58 @@
   <meta charset="UTF-8">
   <title>MiTasaYa | Tu mejor tasa, hoy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Compara dónde pagan mejor hoy para enviar dinero a Colombia.">
+  <meta name="description" content="MiTasaYa te muestra dónde pagan mejor hoy para enviar dinero a Colombia. Próximamente.">
 
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #ffffff;
-      color: #111;
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h1 {
-      margin-bottom: 5px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-
-    th {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .best {
-      background: #e6f7ec;
-      font-weight: bold;
-    }
-
-    .note {
-      font-size: 13px;
-      color: #777;
-      margin-top: 15px;
-    }
-  </style>
+  <!-- Widget dólar Colombia -->
+  <script src="https://www.dolar-colombia.com/widget.js"></script>
+  <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
 </head>
 
-<body>
+<body style="font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; background:#ffffff; color:#111; padding:40px; max-width:700px; margin:auto;">
 
   <h1>MiTasaYa</h1>
   <p><strong>Tu mejor tasa, hoy.</strong></p>
 
+  <p id="usdCop" style="font-size:20px; font-weight:bold;">
+    cargando...
+  </p>
+
+  <p style="font-size:14px; color:#777;">
+    Se actualiza automáticamente. Valor informativo.
+  </p>
+
   <p>
-    USD → COP hoy:
-    <strong id="usdCop">cargando...</strong>
+    Estamos trabajando para mostrarte de forma clara y simple dónde pagan mejor hoy para enviar dinero a Colombia.
   </p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Proveedor</th>
-        <th>Tasa aplicada</th>
-        <th>Recibes por $1,000 USD</th>
-      </tr>
-    </thead>
-    <tbody id="ratesTable"></tbody>
-  </table>
+  <p><em>Próximamente.</em></p>
 
-  <p class="note">
-    Valores estimados. La tasa final puede variar según método de pago y comisiones.
-  </p>
+  <script>
+    async function loadUsdCop() {
+      const el = document.getElementById('usdCop');
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  async function loadRates() {
-    const rateEl = document.getElementById('usdCop');
-    const tableEl = document.getElementById('ratesTable');
+      try {
+        const url = 'https://api.frankfurter.dev/v1/latest?base=USD&symbols=COP';
+        const r = await fetch(url, { cache: 'no-store' });
+        if (!r.ok) throw new Error('http ' + r.status);
 
-    try {
-      const res = await fetch('https://api.frankfurter.dev/v1/latest?base=USD&symbols=COP', {
-        cache: 'no-store'
-      });
+        const data = await r.json();
+        const rate = data && data.rates && data.rates.COP;
+        if (!rate) throw new Error('missing rate');
 
-      if (!res.ok) throw new Error('http ' + res.status);
-
-      const data = await res.json();
-      const baseRate = data && data.rates && data.rates.COP;
-      if (!baseRate) throw new Error('missing rate');
-
-      rateEl.innerText = baseRate.toLocaleString('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        maximumFractionDigits: 0
-      });
-
-      const amountUSD = 1000;
-
-      const providers = [
-        { name: 'Wise', spread: 0.004 },
-        { name: 'Remitly', spread: 0.010 },
-        { name: 'Western Union', spread: 0.020 },
-        { name: 'Banco tradicional', spread: 0.035 }
-      ];
-
-      const rows = providers.map(p => {
-        const rate = baseRate * (1 - p.spread);
-        const received = rate * amountUSD;
-        return { name: p.name, rate, received };
-      });
-
-      const bestValue = Math.max(...rows.map(r => r.received));
-
-      tableEl.innerHTML = rows.map(r => `
-        <tr class="${r.received === bestValue ? 'best' : ''}">
-          <td>${r.name}</td>
-          <td>${Math.round(r.rate).toLocaleString('es-CO')}</td>
-          <td>${Math.round(r.received).toLocaleString('es-CO')} COP</td>
-        </tr>
-      `).join('');
-
-    } catch (e) {
-      rateEl.innerText = 'no disponible';
-      tableEl.innerHTML = '<tr><td colspan="3">No se pudo cargar la información</td></tr>';
-      console.error(e);
+        el.innerText = rate.toLocaleString('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+          maximumFractionDigits: 0
+        });
+      } catch (e) {
+        el.innerText = 'no disponible';
+        console.error(e);
+      }
     }
-  }
 
-  loadRates();
-});
-</script>
+    loadUsdCop();
+  </script>
 
 </body>
 </html>
