@@ -8,22 +8,20 @@
 
   <style>
     :root{
-      /* PALETA AZUL (confianza) */
-      --bg:#0B1220;                 /* fondo azul muy oscuro */
-      --bg2:#0A2540;                /* tono azul profundo */
-      --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.12);
-      --text:#EAF0FF;
-      --muted: rgba(234,240,255,.72);
-      --line: rgba(255,255,255,.14);
-      --shadow: 0 24px 70px rgba(0,0,0,.5);
+      /* PALETA BLANCO + AZUL (limpio, confianza) */
+      --bg:#FFFFFF;
+      --bgSoft:#F9FAFB;
+      --card:#FFFFFF;
+      --text:#111827;
+      --muted:#6B7280;
+      --line:#E5E7EB;
+      --shadow: 0 18px 45px rgba(17,24,39,.08);
       --radius: 18px;
 
-      /* AZULES PRINCIPALES */
-      --blue:#2563EB;               /* azul principal */
-      --blue2:#1F4FD8;              /* azul más profundo */
-      --blueGlow: rgba(37,99,235,.22);
-      --link:#A5B4FC;               /* link suave */
+      --blue:#2563EB;
+      --blue2:#1D4ED8;
+      --blueSoft: rgba(37,99,235,.10);
+      --link:#2563EB;
     }
 
     *{ box-sizing:border-box; }
@@ -34,10 +32,9 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(900px 520px at 12% 10%, var(--blueGlow), transparent 62%),
-        radial-gradient(900px 520px at 88% 18%, rgba(165,180,252,.14), transparent 62%),
-        radial-gradient(900px 520px at 50% 95%, rgba(37,99,235,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2), var(--bg));
+        radial-gradient(900px 520px at 12% 10%, rgba(37,99,235,.08), transparent 62%),
+        radial-gradient(900px 520px at 88% 18%, rgba(99,102,241,.06), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bgSoft));
     }
 
     a{ color: var(--link); text-decoration:none; }
@@ -57,7 +54,7 @@
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(11,18,32,.55);
+      background: rgba(255,255,255,.78);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
@@ -73,8 +70,8 @@
       width:42px;
       height:42px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--blue), rgba(165,180,252,1));
-      box-shadow: 0 14px 35px rgba(37,99,235,.18);
+      background: linear-gradient(135deg, var(--blue), rgba(99,102,241,1));
+      box-shadow: 0 14px 28px rgba(37,99,235,.18);
       flex: 0 0 auto;
     }
 
@@ -103,7 +100,7 @@
       font-size:12px;
       color: var(--muted);
       border: 1px solid var(--line);
-      background: rgba(37,99,235,.10);
+      background: var(--bgSoft);
       padding: 8px 10px;
       border-radius: 999px;
       white-space: nowrap;
@@ -113,10 +110,9 @@
       margin-top: 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(37,99,235,.12), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(249,250,251,1));
       box-shadow: var(--shadow);
       padding: 18px;
-      backdrop-filter: blur(10px);
     }
 
     .hero h2{
@@ -146,11 +142,10 @@
 
     .card{
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
+      background: var(--card);
       border-radius: var(--radius);
       padding: 16px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
-      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
     }
 
     .card h3{
@@ -164,8 +159,8 @@
       align-items:flex-end;
       justify-content:space-between;
       gap:12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(11,18,32,.55);
+      border: 1px solid var(--line);
+      background: var(--bgSoft);
       border-radius: 16px;
       padding: 12px;
     }
@@ -174,6 +169,7 @@
       font-size: 24px;
       font-weight: 800;
       letter-spacing: .2px;
+      color: var(--text);
     }
 
     .rateMeta{
@@ -184,7 +180,7 @@
 
     .mono{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: rgba(234,240,255,.78);
+      color: rgba(17,24,39,.72);
       font-size: 12px;
       white-space: nowrap;
     }
@@ -205,21 +201,27 @@
 
     .btn{
       display:inline-block;
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(135deg, var(--blue), rgba(165,180,252,1));
+      border: 1px solid rgba(37,99,235,.18);
+      background: linear-gradient(135deg, var(--blue), rgba(99,102,241,1));
       color: #ffffff;
       font-weight: 800;
       font-size: 13px;
       padding: 10px 12px;
       border-radius: 14px;
       text-decoration:none;
-      box-shadow: 0 14px 35px rgba(37,99,235,.18);
+      box-shadow: 0 14px 28px rgba(37,99,235,.16);
     }
 
     .btnGhost{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
+      background: #ffffff;
+      color: var(--blue2);
+      border: 1px solid var(--line);
       box-shadow: none;
+    }
+
+    .btnGhost:hover{
+      background: var(--bgSoft);
+      text-decoration:none;
     }
 
     /* CENTRADO FUERTE PARA WIDGET */
@@ -232,7 +234,6 @@
       padding: 8px 0;
     }
 
-    /* Intento de centrar cualquier cosa que el script meta (tablas, divs, etc.) */
     .widgetCenter *{
       margin-left:auto !important;
       margin-right:auto !important;
@@ -252,7 +253,7 @@
     footer{
       margin-top: 16px;
       padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.14);
+      border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 12px;
       display:flex;
@@ -261,10 +262,10 @@
       flex-wrap: wrap;
     }
 
-    /* helpers para tarjetas internas inline */
+    /* Providers (antes estaban inline con el gradiente viejo) */
     .providerBox{
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      background: var(--bgSoft);
       border-radius:16px;
       padding:16px;
       margin-bottom:10px;
@@ -273,12 +274,17 @@
     .providerBtn{
       padding:10px 12px;
       border-radius:12px;
-      background:linear-gradient(135deg, var(--blue), rgba(165,180,252,1));
+      background: linear-gradient(135deg, var(--blue), rgba(99,102,241,1));
       color:#fff;
       font-weight:800;
       text-decoration:none;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 35px rgba(37,99,235,.16);
+      border: 1px solid rgba(37,99,235,.18);
+      box-shadow: 0 14px 28px rgba(37,99,235,.14);
+    }
+
+    .providerBtn:hover{
+      text-decoration:none;
+      filter: brightness(0.98);
     }
   </style>
 </head>
@@ -394,9 +400,7 @@
             </a>
           </div>
         </div>
-
       </section>
-
     </section>
 
     <section class="card" id="como" style="margin-top:14px;">
