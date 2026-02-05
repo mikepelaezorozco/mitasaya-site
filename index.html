@@ -8,14 +8,22 @@
 
   <style>
     :root{
-      --bg:#070b16;
+      /* PALETA AZUL (confianza) */
+      --bg:#0B1220;                 /* fondo azul muy oscuro */
+      --bg2:#0A2540;                /* tono azul profundo */
       --card: rgba(255,255,255,.08);
       --card2: rgba(255,255,255,.12);
-      --text:#eaf0ff;
+      --text:#EAF0FF;
       --muted: rgba(234,240,255,.72);
       --line: rgba(255,255,255,.14);
       --shadow: 0 24px 70px rgba(0,0,0,.5);
       --radius: 18px;
+
+      /* AZULES PRINCIPALES */
+      --blue:#2563EB;               /* azul principal */
+      --blue2:#1F4FD8;              /* azul más profundo */
+      --blueGlow: rgba(37,99,235,.22);
+      --link:#A5B4FC;               /* link suave */
     }
 
     *{ box-sizing:border-box; }
@@ -26,13 +34,13 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(900px 520px at 12% 10%, rgba(56,189,248,.22), transparent 62%),
-        radial-gradient(900px 520px at 88% 18%, rgba(167,139,250,.20), transparent 62%),
-        radial-gradient(900px 520px at 50% 95%, rgba(34,197,94,.10), transparent 60%),
-        linear-gradient(180deg, #060914, #070b16);
+        radial-gradient(900px 520px at 12% 10%, var(--blueGlow), transparent 62%),
+        radial-gradient(900px 520px at 88% 18%, rgba(165,180,252,.14), transparent 62%),
+        radial-gradient(900px 520px at 50% 95%, rgba(37,99,235,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
     }
 
-    a{ color: #a5b4fc; text-decoration:none; }
+    a{ color: var(--link); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
     .wrap{
@@ -49,7 +57,7 @@
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(0,0,0,.18);
+      background: rgba(11,18,32,.55);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
@@ -65,8 +73,8 @@
       width:42px;
       height:42px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(56,189,248,1), rgba(167,139,250,1));
-      box-shadow: 0 14px 35px rgba(56,189,248,.18);
+      background: linear-gradient(135deg, var(--blue), rgba(165,180,252,1));
+      box-shadow: 0 14px 35px rgba(37,99,235,.18);
       flex: 0 0 auto;
     }
 
@@ -95,7 +103,7 @@
       font-size:12px;
       color: var(--muted);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
+      background: rgba(37,99,235,.10);
       padding: 8px 10px;
       border-radius: 999px;
       white-space: nowrap;
@@ -105,7 +113,7 @@
       margin-top: 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      background: linear-gradient(180deg, rgba(37,99,235,.12), rgba(255,255,255,.04));
       box-shadow: var(--shadow);
       padding: 18px;
       backdrop-filter: blur(10px);
@@ -157,7 +165,7 @@
       justify-content:space-between;
       gap:12px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
+      background: rgba(11,18,32,.55);
       border-radius: 16px;
       padding: 12px;
     }
@@ -198,14 +206,14 @@
     .btn{
       display:inline-block;
       border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(135deg, rgba(56,189,248,1), rgba(167,139,250,1));
-      color: #081022;
-      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), rgba(165,180,252,1));
+      color: #ffffff;
+      font-weight: 800;
       font-size: 13px;
       padding: 10px 12px;
       border-radius: 14px;
       text-decoration:none;
-      box-shadow: 0 14px 35px rgba(56,189,248,.14);
+      box-shadow: 0 14px 35px rgba(37,99,235,.18);
     }
 
     .btnGhost{
@@ -252,6 +260,26 @@
       gap:10px;
       flex-wrap: wrap;
     }
+
+    /* helpers para tarjetas internas inline */
+    .providerBox{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      border-radius:16px;
+      padding:16px;
+      margin-bottom:10px;
+    }
+
+    .providerBtn{
+      padding:10px 12px;
+      border-radius:12px;
+      background:linear-gradient(135deg, var(--blue), rgba(165,180,252,1));
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 35px rgba(37,99,235,.16);
+    }
   </style>
 </head>
 
@@ -281,7 +309,7 @@
     </section>
 
     <section class="grid">
-      <!-- BLOQUE 1: Frankfurter USD->COP (lo que ya estabas usando) -->
+      <!-- BLOQUE 1: Frankfurter USD->COP -->
       <div class="card">
         <h3>Tasa USD a COP</h3>
 
@@ -298,76 +326,78 @@
         </p>
       </div>
 
-      <!-- BLOQUE 2: WIDGET DÓLAR COLOMBIA (centrado sí o sí) -->
+      <!-- BLOQUE 2: WIDGET DÓLAR COLOMBIA -->
       <div class="card" id="widget">
         <h3>Dólar Colombia</h3>
 
         <div class="widgetCenter">
-          <!-- Widget dólar Colombia (se mantiene tal cual, solo lo movemos al body para controlarlo) -->
           <script src="https://www.dolar-colombia.com/widget.js"></script>
           <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
         </div>
 
         <p class="note">Se actualiza automáticamente. Valor informativo.</p>
       </div>
-    <section class="card" style="margin-top:14px;">
-  <h3>Comparar proveedores</h3>
 
-  <!-- WESTERN UNION -->
-  <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);border-radius:16px;padding:16px;margin-bottom:10px;">
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-      <div>
-        <div style="font-weight:700;">Western Union</div>
-        <div style="opacity:.75;font-size:13px;">USD → COP</div>
-      </div>
-      <a
-        href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,#38bdf8,#a78bfa);color:#081022;font-weight:700;text-decoration:none;"
-      >
-        Ver tasa
-      </a>
-    </div>
-  </div>
+      <section class="card" style="margin-top:14px;">
+        <h3>Comparar proveedores</h3>
 
-  <!-- RIA -->
-  <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);border-radius:16px;padding:16px;margin-bottom:10px;">
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-      <div>
-        <div style="font-weight:700;">Ria Money Transfer</div>
-        <div style="opacity:.75;font-size:13px;">USD → COP</div>
-      </div>
-      <a
-        href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,#38bdf8,#a78bfa);color:#081022;font-weight:700;text-decoration:none;"
-      >
-        Ver tasa
-      </a>
-    </div>
-  </div>
+        <!-- WESTERN UNION -->
+        <div class="providerBox">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <div style="font-weight:800;">Western Union</div>
+              <div style="opacity:.75;font-size:13px;">USD → COP</div>
+            </div>
+            <a
+              href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="providerBtn"
+            >
+              Ver tasa
+            </a>
+          </div>
+        </div>
 
-  <!-- REMITLY -->
-  <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);border-radius:16px;padding:16px;">
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-      <div>
-        <div style="font-weight:700;">Remitly</div>
-        <div style="opacity:.75;font-size:13px;">Enviar USD a COP</div>
-      </div>
-      <a
-        href="https://www.remitly.com/us/es/colombia"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,#38bdf8,#a78bfa);color:#081022;font-weight:700;text-decoration:none;"
-      >
-        Ver tasa
-      </a>
-    </div>
-  </div>
+        <!-- RIA -->
+        <div class="providerBox">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <div style="font-weight:800;">Ria Money Transfer</div>
+              <div style="opacity:.75;font-size:13px;">USD → COP</div>
+            </div>
+            <a
+              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="providerBtn"
+            >
+              Ver tasa
+            </a>
+          </div>
+        </div>
 
-</section>
+        <!-- REMITLY -->
+        <div class="providerBox" style="margin-bottom:0;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <div style="font-weight:800;">Remitly</div>
+              <div style="opacity:.75;font-size:13px;">Enviar USD a COP</div>
+            </div>
+            <a
+              href="https://www.remitly.com/us/es/colombia"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="providerBtn"
+            >
+              Ver tasa
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </section>
 
     <section class="card" id="como" style="margin-top:14px;">
       <h3>Cómo funciona</h3>
