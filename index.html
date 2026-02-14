@@ -6,15 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="MiTasaYa te muestra el dólar hoy y pronto te dirá dónde pagan mejor para enviar dinero a Colombia." />
 
-<!-- Google Analytics -->
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWH7H5VHT4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-HWH7H5VHT4');
+
+    function trackClick(eventName){
+      if (typeof gtag === "function") {
+        gtag('event', eventName);
+      }
+    }
   </script>
-  
+
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -25,16 +31,12 @@
       --bg: #FBF7F2;
       --surface: #FFFFFF;
       --surface2: #FFFDF9;
-
       --text: #102A2A;
       --muted: #5C6B6B;
       --line: #E9E1D7;
-
       --accent: #0EA5A4;
       --accent2: #0B8F8E;
-
       --warmSoft: rgba(245,158,11,.14);
-
       --radius: 18px;
       --shadow: 0 10px 22px rgba(16, 42, 42, .06);
     }
@@ -233,7 +235,6 @@
     <section class="grid">
       <div class="card">
         <div class="cardTitle">Dólar Colombia</div>
-
         <div class="widgetCenter">
           <script src="https://www.dolar-colombia.com/widget.js"></script>
           <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
@@ -252,7 +253,8 @@
             <div class="pMeta">USD → COP</div>
           </div>
           <a class="pBtn" target="_blank"
-            href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html">
+            href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html"
+            onclick="trackClick('click_western_union')">
             Ver tasa
           </a>
         </div>
@@ -265,7 +267,8 @@
           <div style="display:flex; gap:8px; align-items:center;">
             <span class="pChipWarm">Recomendado hoy</span>
             <a class="pBtn" target="_blank"
-              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1">
+              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1"
+              onclick="trackClick('click_ria')">
               Ver tasa
             </a>
           </div>
@@ -277,7 +280,8 @@
             <div class="pMeta">USD → COP</div>
           </div>
           <a class="pBtn" target="_blank"
-            href="https://www.remitly.com/us/es/colombia">
+            href="https://www.remitly.com/us/es/colombia"
+            onclick="trackClick('click_remitly')">
             Ver tasa
           </a>
         </div>
