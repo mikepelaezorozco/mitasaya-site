@@ -13,19 +13,16 @@
 
   <style>
     :root{
-      /* LATAM FRIENDLY: cálido, confiable, simple */
-      --bg: #FBF7F2;          /* crema suave */
-      --surface: #FFFFFF;     /* tarjetas */
-      --surface2: #FFFDF9;    /* fondo interno sutil */
+      --bg: #FBF7F2;
+      --surface: #FFFFFF;
+      --surface2: #FFFDF9;
+      --text: #102A2A;
+      --muted: #5C6B6B;
+      --line: #E9E1D7;
 
-      --text: #102A2A;        /* verde carbón */
-      --muted: #5C6B6B;       /* gris verdoso */
-      --line: #E9E1D7;        /* separadores cálidos */
-
-      --accent: #0EA5A4;      /* turquesa */
+      --accent: #0EA5A4;
       --accent2: #0B8F8E;
 
-      --warm: #F59E0B;        /* toque cálido para badges */
       --warmSoft: rgba(245,158,11,.14);
 
       --radius: 18px;
@@ -47,17 +44,10 @@
 
     a{ color: inherit; text-decoration:none; }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 22px 16px 46px;
-    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 22px 16px 46px; }
 
     .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -66,42 +56,16 @@
       box-shadow: var(--shadow);
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 0;
-    }
-
+    .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
     .logo{
-      width:40px;
-      height:40px;
-      border-radius: 14px;
+      width:40px; height:40px; border-radius:14px;
       background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.55));
       box-shadow: 0 12px 18px rgba(14,165,164,.22);
-      flex: 0 0 auto;
+      flex:0 0 auto;
     }
-
-    .brandTitle{
-      display:flex;
-      flex-direction:column;
-      min-width: 0;
-    }
-
-    .brandTitle h1{
-      margin:0;
-      font-size:15px;
-      letter-spacing:.2px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-
-    .brandTitle p{
-      margin:2px 0 0 0;
-      font-size:12px;
-      color: var(--muted);
-    }
+    .brandTitle{ display:flex; flex-direction:column; min-width:0; }
+    .brandTitle h1{ margin:0; font-size:15px; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .brandTitle p{ margin:2px 0 0 0; font-size:12px; color: var(--muted); }
 
     .badge{
       font-size:12px;
@@ -115,112 +79,54 @@
     }
 
     .hero{
-      margin-top: 14px;
-      padding: 18px;
+      margin-top: 14px; padding: 18px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255,255,255,.86);
       backdrop-filter: blur(8px);
       box-shadow: var(--shadow);
     }
+    .hero h2{ margin:0 0 6px 0; font-size:26px; line-height:1.15; letter-spacing:-0.2px; }
+    .hero p{ margin:0; max-width:72ch; color: var(--muted); line-height:1.55; font-size:14px; }
 
-    .hero h2{
-      margin:0 0 6px 0;
-      font-size: 26px;
-      line-height:1.15;
-      letter-spacing: -0.2px;
-    }
-
-    .hero p{
-      margin:0;
-      max-width: 72ch;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    .heroActions{
-      margin-top: 12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(14,165,164,.22);
-      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.60));
-      color: #fff;
-      font-weight: 900;
-      font-size: 13px;
-      box-shadow: 0 12px 18px rgba(14,165,164,.18);
-    }
-
-    .btn:hover{ filter: brightness(.98); }
-
-    .btnGhost{
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--line);
-      box-shadow: none;
-      font-weight: 800;
-    }
-
-    .btnGhost:hover{ background: rgba(255,255,255,.55); }
-
-    .heroInputs{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .field{
-      flex: 1 1 220px;
-      min-width: 220px;
-    }
-
-    .label{
-      font-size:12px;
-      color: var(--muted);
-      margin-bottom:6px;
-      font-weight: 800;
-    }
-
+    .heroInputs{ margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .field{ flex:1 1 220px; min-width:220px; }
+    .label{ font-size:12px; color: var(--muted); margin-bottom:6px; font-weight:800; }
     .input{
       width:100%;
-      padding:12px 12px;
+      padding:12px;
       border-radius:14px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.9);
       outline:none;
       color: var(--text);
     }
+    .input:focus{ border-color: rgba(14,165,164,.45); box-shadow: 0 0 0 4px rgba(14,165,164,.10); }
 
-    .input:focus{
-      border-color: rgba(14,165,164,.45);
-      box-shadow: 0 0 0 4px rgba(14,165,164,.10);
+    .heroActions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(14,165,164,.22);
+      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.60));
+      color:#fff;
+      font-weight:900;
+      font-size:13px;
+      box-shadow: 0 12px 18px rgba(14,165,164,.18);
     }
+    .btn:hover{ filter: brightness(.98); }
+    .btnGhost{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow:none;
+      font-weight:800;
+    }
+    .btnGhost:hover{ background: rgba(255,255,255,.55); }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    @media (min-width: 900px){
-      .grid{
-        grid-template-columns: 1.1fr .9fr;
-        align-items:start;
-      }
-    }
+    .grid{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px; }
+    @media (min-width: 900px){ .grid{ grid-template-columns: 1.1fr .9fr; align-items:start; } }
 
     .card{
       border: 1px solid var(--line);
@@ -229,52 +135,23 @@
       box-shadow: var(--shadow);
       padding: 16px;
     }
+    .cardTitle{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+    .cardTitle h3{ margin:0; font-size:14px; letter-spacing:.2px; }
 
-    .cardTitle{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom: 10px;
-    }
-
-    .cardTitle h3{
-      margin:0;
-      font-size: 14px;
-      letter-spacing:.2px;
-    }
-
-    .small{
-      font-size:12px;
-      color: var(--muted);
-    }
+    .small{ font-size:12px; color: var(--muted); }
 
     .rateRow{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      padding: 12px;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      padding:12px;
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius:16px;
       background: var(--surface2);
     }
-
-    .rateValue{
-      font-size: 26px;
-      font-weight: 950;
-      letter-spacing:.2px;
-    }
-
-    .rateMeta{
-      margin-top: 4px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
+    .rateValue{ font-size:26px; font-weight:950; letter-spacing:.2px; }
+    .rateMeta{ margin-top:4px; font-size:12px; color: var(--muted); }
     .mono{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
+      font-size:12px;
       color: rgba(16,42,42,.65);
       white-space: nowrap;
     }
@@ -287,31 +164,11 @@
       overflow-x:auto;
       padding: 6px 0;
     }
-    .widgetCenter *{
-      margin-left:auto !important;
-      margin-right:auto !important;
-      float:none !important;
-      text-align:center !important;
-    }
 
-    .compareHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom: 10px;
-    }
+    .compareHeader{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+    .compareHint{ font-size:12px; color: var(--muted); }
 
-    .compareHint{
-      font-size:12px;
-      color: var(--muted);
-    }
-
-    .providers{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
+    .providers{ display:flex; flex-direction:column; gap:10px; }
 
     .provider{
       border: 1px solid var(--line);
@@ -324,40 +181,18 @@
       gap:12px;
     }
 
-    .pLeft{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width: 0;
-    }
+    .pLeft{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+    .pName{ font-weight:950; font-size:14px; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .pMeta{ font-size:12px; color: var(--muted); }
 
-    .pName{
-      font-weight: 950;
-      font-size: 14px;
-      letter-spacing:.2px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-    }
-
-    .pMeta{
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .pRight{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex: 0 0 auto;
-    }
+    .pRight{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
 
     .pChip{
-      font-size: 12px;
-      font-weight: 900;
-      padding: 7px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(14,165,164,.18);
+      font-size:12px;
+      font-weight:900;
+      padding:7px 9px;
+      border-radius:999px;
+      border:1px solid rgba(14,165,164,.18);
       color: var(--accent2);
       background: rgba(14,165,164,.10);
       white-space: nowrap;
@@ -370,19 +205,162 @@
     }
 
     .pBtn{
-      padding: 9px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(14,165,164,.22);
+      padding:9px 10px;
+      border-radius:12px;
+      border:1px solid rgba(14,165,164,.22);
       background: var(--accent);
       color:#fff;
-      font-weight: 950;
-      font-size: 12px;
+      font-weight:950;
+      font-size:12px;
       white-space: nowrap;
     }
-
     .pBtn:hover{ filter: brightness(.98); }
 
     footer{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--
+      margin-top:16px; padding-top:14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brandTitle">
+          <h1>MiTasaYa</h1>
+          <p>Tu mejor tasa, hoy</p>
+        </div>
+      </div>
+      <div class="badge">Comparador en camino</div>
+    </header>
+
+    <section class="hero">
+      <h2>Compara rápido y elige sin enredos</h2>
+      <p>
+        Hoy: dólar del día y accesos directos. Próximamente: comparación por monto, fees y mejor opción destacada.
+      </p>
+
+      <div class="heroInputs">
+        <div class="field">
+          <div class="label">Monto a enviar (USD)</div>
+          <input id="amountUsd" class="input" type="number" inputmode="decimal" placeholder="Ej: 200" />
+        </div>
+
+        <div class="field">
+          <div class="label">Meta (opcional)</div>
+          <input class="input" type="text" placeholder="Más COP, menos fees, rapidez…" />
+        </div>
+      </div>
+
+      <div class="heroActions">
+        <a class="btn" href="#comparar">Comparar ahora</a>
+        <a class="btn btnGhost" href="#widget">Ver dólar Colombia</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="cardTitle">
+          <h3>Tasa USD a COP</h3>
+          <span class="small">Fuente: Frankfurter</span>
+        </div>
+
+        <div class="rateRow">
+          <div>
+            <div class="rateValue" id="usdCop">Cargando…</div>
+            <div class="rateMeta" id="updatedAt">Actualizando</div>
+          </div>
+          <div class="mono">USD → COP</div>
+        </div>
+
+        <p class="small" style="margin:10px 0 0 0;">
+          Si aparece “No disponible”, puede ser un fallo temporal. Se reintenta solo.
+        </p>
+      </div>
+
+      <div class="card" id="widget">
+        <div class="cardTitle">
+          <h3>Dólar Colombia</h3>
+          <span class="small">Widget externo (opcional)</span>
+        </div>
+
+        <!-- Contenedor seguro: si el script falla, la página igual carga -->
+        <div class="widgetCenter" id="widgetMount">
+          <div class="small">Cargando widget…</div>
+        </div>
+
+        <p class="small" style="margin:10px 0 0 0;">
+          Si el widget no aparece, igual tienes la tasa USD→COP arriba.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="comparar" style="margin-top:12px;">
+      <div class="compareHeader">
+        <h3 style="margin:0;font-size:14px;letter-spacing:.2px;">Comparar proveedores</h3>
+        <div class="compareHint">Todo parejo: USD → COP</div>
+      </div>
+
+      <div class="providers">
+        <div class="provider">
+          <div class="pLeft">
+            <div class="pName">Western Union</div>
+            <div class="pMeta">USD → COP</div>
+          </div>
+          <div class="pRight">
+            <span class="pChip">Abrir</span>
+            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+              href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html">
+              Ver tasa
+            </a>
+          </div>
+        </div>
+
+        <div class="provider">
+          <div class="pLeft">
+            <div class="pName">Ria Money Transfer</div>
+            <div class="pMeta">USD → COP</div>
+          </div>
+          <div class="pRight">
+            <span class="pChip pChipWarm">Recomendado hoy</span>
+            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1">
+              Ver tasa
+            </a>
+          </div>
+        </div>
+
+        <div class="provider">
+          <div class="pLeft">
+            <div class="pName">Remitly</div>
+            <div class="pMeta">USD → COP</div>
+          </div>
+          <div class="pRight">
+            <span class="pChip">Abrir</span>
+            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+              href="https://www.remitly.com/us/es/colombia">
+              Ver tasa
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <p class="small" style="margin:12px 0 0 0;">
+        Próximo paso: mostrar aquí la mejor opción por monto, con la tasa final y fees.
+      </p>
+    </section>
+
+    <section class="card" id="como" style="margin-top:12px;">
+      <h3 style="margin:0 0 8px 0;font-size:14px;letter-spacing:.2px;">Cómo funciona</h3>
+      <p class="small" style="margin:0; line-height:1.6;">
+        MiTasaYa te muestra el dólar hoy y te deja comparar rápido. Próximamente vas a poder ver la tasa final estimada según el monto y fees.
+      </p>
+    </sectio
