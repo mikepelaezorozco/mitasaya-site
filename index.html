@@ -11,13 +11,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Reactiva widget directamente en HEAD como lo tenías cuando sí aparecía -->
-  <script src="https://www.dolar-colombia.com/widget.js"></script>
-  <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
-
   <style>
     :root{
-      /* LATAM FRIENDLY */
       --bg: #FBF7F2;
       --surface: #FFFFFF;
       --surface2: #FFFDF9;
@@ -73,7 +68,6 @@
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 0;
     }
 
     .logo{
@@ -82,22 +76,11 @@
       border-radius: 14px;
       background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.55));
       box-shadow: 0 12px 18px rgba(14,165,164,.22);
-      flex: 0 0 auto;
-    }
-
-    .brandTitle{
-      display:flex;
-      flex-direction:column;
-      min-width: 0;
     }
 
     .brandTitle h1{
       margin:0;
       font-size:15px;
-      letter-spacing:.2px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
     }
 
     .brandTitle p{
@@ -113,7 +96,6 @@
       border: 1px solid rgba(245,158,11,.28);
       padding: 8px 10px;
       border-radius: 999px;
-      white-space: nowrap;
       font-weight: 800;
     }
 
@@ -130,99 +112,19 @@
     .hero h2{
       margin:0 0 6px 0;
       font-size: 26px;
-      line-height:1.15;
-      letter-spacing: -0.2px;
     }
 
     .hero p{
       margin:0;
-      max-width: 72ch;
       color: var(--muted);
-      line-height: 1.55;
       font-size: 14px;
     }
-
-    .heroInputs{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .field{
-      flex: 1 1 220px;
-      min-width: 220px;
-    }
-
-    .label{
-      font-size:12px;
-      color: var(--muted);
-      margin-bottom:6px;
-      font-weight: 800;
-    }
-
-    .input{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.9);
-      outline:none;
-      color: var(--text);
-    }
-
-    .input:focus{
-      border-color: rgba(14,165,164,.45);
-      box-shadow: 0 0 0 4px rgba(14,165,164,.10);
-    }
-
-    .heroActions{
-      margin-top: 12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(14,165,164,.22);
-      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.60));
-      color: #fff;
-      font-weight: 900;
-      font-size: 13px;
-      box-shadow: 0 12px 18px rgba(14,165,164,.18);
-    }
-
-    .btn:hover{ filter: brightness(.98); }
-
-    .btnGhost{
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--line);
-      box-shadow: none;
-      font-weight: 800;
-    }
-
-    .btnGhost:hover{ background: rgba(255,255,255,.55); }
 
     .grid{
       display:grid;
       grid-template-columns: 1fr;
       gap: 12px;
-      margin-top: 12px;
-    }
-
-    @media (min-width: 900px){
-      .grid{
-        grid-template-columns: 1fr; /* ahora solo widget y comparación */
-        align-items:start;
-      }
+      margin-top: 14px;
     }
 
     .card{
@@ -234,25 +136,11 @@
     }
 
     .cardTitle{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
       margin-bottom: 10px;
+      font-size:14px;
+      font-weight:900;
     }
 
-    .cardTitle h3{
-      margin:0;
-      font-size: 14px;
-      letter-spacing:.2px;
-    }
-
-    .small{
-      font-size:12px;
-      color: var(--muted);
-    }
-
-    /* Widget centering fuerte */
     .widgetCenter{
       width:100%;
       display:flex;
@@ -269,23 +157,11 @@
       text-align:center !important;
     }
 
-    .compareHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom: 10px;
-    }
-
-    .compareHint{
-      font-size:12px;
-      color: var(--muted);
-    }
-
     .providers{
       display:flex;
       flex-direction:column;
       gap:10px;
+      margin-top:12px;
     }
 
     .provider{
@@ -294,88 +170,53 @@
       border-radius: 16px;
       padding: 12px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
-    }
-
-    .pLeft{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width: 0;
-    }
-
-    .pName{
-      font-weight: 950;
-      font-size: 14px;
-      letter-spacing:.2px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
+      align-items:center;
     }
 
     .pMeta{
-      font-size: 12px;
+      font-size:12px;
       color: var(--muted);
-    }
-
-    .pRight{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex: 0 0 auto;
-    }
-
-    .pChip{
-      font-size: 12px;
-      font-weight: 900;
-      padding: 7px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(14,165,164,.18);
-      color: var(--accent2);
-      background: rgba(14,165,164,.10);
-      white-space: nowrap;
     }
 
     .pChipWarm{
       background: rgba(245,158,11,.14);
       border: 1px solid rgba(245,158,11,.28);
       color:#7A4A00;
+      padding:6px 8px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
     }
 
     .pBtn{
-      padding: 9px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(14,165,164,.22);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(14,165,164,.22);
       background: var(--accent);
       color:#fff;
-      font-weight: 950;
-      font-size: 12px;
-      white-space: nowrap;
+      font-weight:900;
+      font-size:12px;
     }
 
-    .pBtn:hover{ filter: brightness(.98); }
-
     footer{
-      margin-top: 16px;
+      margin-top: 20px;
       padding-top: 14px;
       border-top: 1px solid var(--line);
+      font-size:12px;
       color: var(--muted);
-      font-size: 12px;
       display:flex;
       justify-content:space-between;
-      gap:10px;
-      flex-wrap: wrap;
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+
     <header class="topbar">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo"></div>
         <div class="brandTitle">
           <h1>MiTasaYa</h1>
           <p>Tu mejor tasa, hoy</p>
@@ -386,76 +227,44 @@
 
     <section class="hero">
       <h2>Compara rápido y elige sin enredos</h2>
-      <p>
-        Accesos directos a proveedores para comparar en segundos. Próximamente: comparación por monto, fees y mejor opción destacada.
-      </p>
-
-      <div class="heroInputs">
-        <div class="field">
-          <div class="label">Monto a enviar (USD)</div>
-          <input id="amountUsd" class="input" type="number" inputmode="decimal" placeholder="Ej: 200" />
-        </div>
-
-        <div class="field">
-          <div class="label">Meta (opcional)</div>
-          <input class="input" type="text" placeholder="Más COP, menos fees, rapidez…" />
-        </div>
-      </div>
-
-      <div class="heroActions">
-        <a class="btn" href="#comparar">Comparar ahora</a>
-        <a class="btn btnGhost" href="#widget">Ver dólar Colombia</a>
-      </div>
+      <p>Accesos directos a proveedores para comparar en segundos.</p>
     </section>
 
     <section class="grid">
-      <div class="card" id="widget">
-        <div class="cardTitle">
-          <h3>Dólar Colombia</h3>
-          <span class="small">Widget externo</span>
-        </div>
+      <div class="card">
+        <div class="cardTitle">Dólar Colombia</div>
 
         <div class="widgetCenter">
-          <!-- Widget como antes, dentro del BODY -->
+          <!-- SOLO AQUÍ vive el widget -->
           <script src="https://www.dolar-colombia.com/widget.js"></script>
           <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
         </div>
-
-        <p class="small" style="margin:10px 0 0 0;">
-          Se actualiza automáticamente. Valor informativo.
-        </p>
       </div>
     </section>
 
-    <section class="card" id="comparar" style="margin-top:12px;">
-      <div class="compareHeader">
-        <h3 style="margin:0;font-size:14px;letter-spacing:.2px;">Comparar proveedores</h3>
-        <div class="compareHint">Todo parejo: USD → COP</div>
-      </div>
+    <section class="card" style="margin-top:12px;">
+      <div style="font-weight:900; font-size:14px;">Comparar proveedores</div>
 
       <div class="providers">
         <div class="provider">
-          <div class="pLeft">
-            <div class="pName">Western Union</div>
+          <div>
+            <div style="font-weight:900;">Western Union</div>
             <div class="pMeta">USD → COP</div>
           </div>
-          <div class="pRight">
-            <span class="pChip">Abrir</span>
-            <a class="pBtn" target="_blank" rel="noopener noreferrer"
-              href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html">
-              Ver tasa
-            </a>
-          </div>
+          <a class="pBtn" target="_blank"
+            href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html">
+            Ver tasa
+          </a>
         </div>
 
         <div class="provider">
-          <div class="pLeft">
-            <div class="pName">Ria Money Transfer</div>
+          <div>
+            <div style="font-weight:900;">Ria Money Transfer</div>
             <div class="pMeta">USD → COP</div>
           </div>
-          <div class="pRight">
-            <span class="pChip pChipWarm">Recomendado hoy</span>
-            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="pChipWarm">Recomendado hoy</span>
+            <a class="pBtn" target="_blank"
               href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1">
               Ver tasa
             </a>
@@ -463,40 +272,28 @@
         </div>
 
         <div class="provider">
-          <div class="pLeft">
-            <div class="pName">Remitly</div>
+          <div>
+            <div style="font-weight:900;">Remitly</div>
             <div class="pMeta">USD → COP</div>
           </div>
-          <div class="pRight">
-            <span class="pChip">Abrir</span>
-            <a class="pBtn" target="_blank" rel="noopener noreferrer"
-              href="https://www.remitly.com/us/es/colombia">
-              Ver tasa
-            </a>
-          </div>
+          <a class="pBtn" target="_blank"
+            href="https://www.remitly.com/us/es/colombia">
+            Ver tasa
+          </a>
         </div>
       </div>
-
-      <p class="small" style="margin:12px 0 0 0;">
-        Próximo paso: mostrar la mejor opción por monto y fees aquí mismo.
-      </p>
-    </section>
-
-    <section class="card" id="como" style="margin-top:12px;">
-      <h3 style="margin:0 0 8px 0;font-size:14px;letter-spacing:.2px;">Cómo funciona</h3>
-      <p class="small" style="margin:0; line-height:1.6;">
-        MiTasaYa te deja comparar rápido con accesos directos. Próximamente vas a ver la comparación final según el monto y fees.
-      </p>
     </section>
 
     <footer>
       <span>© <span id="year"></span> MiTasaYa</span>
-      <span class="mono">mitasaya.com</span>
+      <span>mitasaya.com</span>
     </footer>
+
   </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
