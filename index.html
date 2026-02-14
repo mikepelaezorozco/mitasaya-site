@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<div style="text-align:center; margin:40px 0;">
-  <img src="logo-mitasaya.png" alt="MiTasaYa Logo" style="width:260px;">
-</div>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -46,8 +43,6 @@
       color: var(--text);
     }
 
-    a{ color: inherit; text-decoration:none; }
-
     .wrap{
       max-width: 980px;
       margin: 0 auto;
@@ -73,12 +68,11 @@
       gap:12px;
     }
 
-    .logo{
+    .logoImg{
       width:40px;
       height:40px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.55));
-      box-shadow: 0 12px 18px rgba(14,165,164,.22);
+      object-fit:contain;
+      border-radius: 10px;
     }
 
     .brandTitle h1{
@@ -153,13 +147,6 @@
       padding: 6px 0;
     }
 
-    .widgetCenter *{
-      margin-left:auto !important;
-      margin-right:auto !important;
-      float:none !important;
-      text-align:center !important;
-    }
-
     .providers{
       display:flex;
       flex-direction:column;
@@ -200,6 +187,7 @@
       color:#fff;
       font-weight:900;
       font-size:12px;
+      text-decoration:none;
     }
 
     footer{
@@ -219,7 +207,7 @@
 
     <header class="topbar">
       <div class="brand">
-        <div class="logo"></div>
+        <img class="logoImg" src="logo-mitasaya.png" alt="MiTasaYa Logo">
         <div class="brandTitle">
           <h1>MiTasaYa</h1>
           <p>Tu mejor tasa, hoy</p>
@@ -238,7 +226,6 @@
         <div class="cardTitle">Dólar Colombia</div>
 
         <div class="widgetCenter">
-          <!-- SOLO AQUÍ vive el widget -->
           <script src="https://www.dolar-colombia.com/widget.js"></script>
           <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
         </div>
@@ -249,6 +236,7 @@
       <div style="font-weight:900; font-size:14px;">Comparar proveedores</div>
 
       <div class="providers">
+
         <div class="provider">
           <div>
             <div style="font-weight:900;">Western Union</div>
@@ -284,6 +272,7 @@
             Ver tasa
           </a>
         </div>
+
       </div>
     </section>
 
