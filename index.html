@@ -18,7 +18,7 @@
       --surface: #FFFFFF;     /* tarjetas */
       --surface2: #FFFDF9;    /* fondo interno sutil */
 
-      --text: #102A2A;        /* verde carbón, más cálido que negro */
+      --text: #102A2A;        /* verde carbón */
       --muted: #5C6B6B;       /* gris verdoso */
       --line: #E9E1D7;        /* separadores cálidos */
 
@@ -173,6 +173,41 @@
 
     .btnGhost:hover{ background: rgba(255,255,255,.55); }
 
+    .heroInputs{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .field{
+      flex: 1 1 220px;
+      min-width: 220px;
+    }
+
+    .label{
+      font-size:12px;
+      color: var(--muted);
+      margin-bottom:6px;
+      font-weight: 800;
+    }
+
+    .input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      outline:none;
+      color: var(--text);
+    }
+
+    .input:focus{
+      border-color: rgba(14,165,164,.45);
+      box-shadow: 0 0 0 4px rgba(14,165,164,.10);
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -325,6 +360,13 @@
       border: 1px solid rgba(14,165,164,.18);
       color: var(--accent2);
       background: rgba(14,165,164,.10);
+      white-space: nowrap;
+    }
+
+    .pChipWarm{
+      background: rgba(245,158,11,.14);
+      border: 1px solid rgba(245,158,11,.28);
+      color:#7A4A00;
     }
 
     .pBtn{
@@ -343,177 +385,4 @@
     footer{
       margin-top: 16px;
       padding-top: 14px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="brandTitle">
-          <h1>MiTasaYa</h1>
-          <p>Tu mejor tasa, hoy</p>
-        </div>
-      </div>
-      <div class="badge">Comparador en camino</div>
-    </header>
-
-    <section class="hero">
-      <h2>Compara rápido y elige sin enredos</h2>
-      <p>
-        Hoy: dólar del día y accesos directos. Próximamente: comparación por monto, fees y mejor opción destacada.
-      </p>
-
-      <div class="heroActions">
-        <a class="btn" href="#comparar">Comparar ahora</a>
-        <a class="btn btnGhost" href="#widget">Ver dólar Colombia</a>
-      </div>
-    </section>
-
-    <section class="grid">
-      <div class="card">
-        <div class="cardTitle">
-          <h3>Tasa USD a COP</h3>
-          <span class="small">Fuente: Frankfurter</span>
-        </div>
-
-        <div class="rateRow">
-          <div>
-            <div class="rateValue" id="usdCop">Cargando…</div>
-            <div class="rateMeta" id="updatedAt">Actualizando</div>
-          </div>
-          <div class="mono">USD → COP</div>
-        </div>
-
-        <p class="small" style="margin:10px 0 0 0;">
-          Si aparece “No disponible”, puede ser un fallo temporal. Se reintenta solo.
-        </p>
-      </div>
-
-      <div class="card" id="widget">
-        <div class="cardTitle">
-          <h3>Dólar Colombia</h3>
-          <span class="small">Widget externo</span>
-        </div>
-
-        <div class="widgetCenter">
-          <script src="https://www.dolar-colombia.com/widget.js"></script>
-          <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
-        </div>
-
-        <p class="small" style="margin:10px 0 0 0;">Se actualiza automáticamente. Valor informativo.</p>
-      </div>
-    </section>
-
-    <section class="card" id="comparar" style="margin-top:12px;">
-      <div class="compareHeader">
-        <h3 style="margin:0;font-size:14px;letter-spacing:.2px;">Comparar proveedores</h3>
-        <div class="compareHint">Abre cada proveedor y compara en segundos</div>
-      </div>
-
-      <div class="providers">
-        <div class="provider">
-          <div class="pLeft">
-            <div class="pName">Western Union</div>
-            <div class="pMeta">USD → COP · Convertidor</div>
-          </div>
-          <div class="pRight">
-            <span class="pChip">Link directo</span>
-            <a class="pBtn" target="_blank" rel="noopener noreferrer"
-              href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html">
-              Ver tasa
-            </a>
-          </div>
-        </div>
-
-        <div class="provider">
-          <div class="pLeft">
-            <div class="pName">Ria Money Transfer</div>
-            <div class="pMeta">USD → COP · Rate conversion</div>
-          </div>
-          <div class="pRight">
-            <span class="pChip">Link directo</span>
-            <a class="pBtn" target="_blank" rel="noopener noreferrer"
-              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1">
-              Ver tasa
-            </a>
-          </div>
-        </div>
-
-        <div class="provider">
-          <div class="pLeft">
-            <div class="pName">Remitly</div>
-            <div class="pMeta">Enviar USD a COP · Página Colombia</div>
-          </div>
-          <div class="pRight">
-            <span class="pChip">Link directo</span>
-            <a class="pBtn" target="_blank" rel="noopener noreferrer"
-              href="https://www.remitly.com/us/es/colombia">
-              Ver tasa
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <p class="small" style="margin:12px 0 0 0;">
-        Próximo paso: tabla por monto enviado con la mejor opción marcada.
-      </p>
-    </section>
-
-    <section class="card" id="como" style="margin-top:12px;">
-      <h3 style="margin:0 0 8px 0;font-size:14px;letter-spacing:.2px;">Cómo funciona</h3>
-      <p class="small" style="margin:0; line-height:1.6;">
-        MiTasaYa te muestra el dólar hoy y te deja comparar rápido. Próximamente vas a poder ver la tasa final estimada según el monto y fees.
-      </p>
-    </section>
-
-    <footer>
-      <span>© <span id="year"></span> MiTasaYa</span>
-      <span class="mono">mitasaya.com</span>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    async function loadUsdCop() {
-      const el = document.getElementById('usdCop');
-      const updated = document.getElementById('updatedAt');
-
-      try {
-        const url = 'https://api.frankfurter.dev/v1/latest?base=USD&symbols=COP';
-        const r = await fetch(url, { cache: 'no-store' });
-        if (!r.ok) throw new Error('http ' + r.status);
-
-        const data = await r.json();
-        const rate = data && data.rates && data.rates.COP;
-        if (!rate) throw new Error('no rate');
-
-        const formatted = new Intl.NumberFormat('es-CO', {
-          style: 'currency',
-          currency: 'COP',
-          maximumFractionDigits: 0
-        }).format(rate);
-
-        el.textContent = formatted;
-        updated.textContent = 'Actualizado: ' + new Date().toLocaleString('es-CO');
-      } catch (e) {
-        el.textContent = 'No disponible';
-        updated.textContent = 'Reintentando…';
-      }
-    }
-
-    loadUsdCop();
-    setInterval(loadUsdCop, 60 * 60 * 1000);
-  </script>
-</body>
-</html>
+      border-top: 1px solid var(--
