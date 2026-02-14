@@ -6,27 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="MiTasaYa te muestra el dólar hoy y pronto te dirá dónde pagan mejor para enviar dinero a Colombia." />
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<body>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <style>
     :root{
-      /* PALETA BLANCO + AZUL (limpio, confianza) */
-      --bg:#FFFFFF;
-      --bgSoft:#F9FAFB;
-      --card:#FFFFFF;
-      --text:#111827;
-      --muted:#6B7280;
-      --line:#E5E7EB;
-      --shadow: 0 18px 45px rgba(17,24,39,.08);
-      --radius: 18px;
+      /* LATAM FRIENDLY: cálido, confiable, simple */
+      --bg: #FBF7F2;          /* crema suave */
+      --surface: #FFFFFF;     /* tarjetas */
+      --surface2: #FFFDF9;    /* fondo interno sutil */
 
-      --blue:#2563EB;
-      --blue2:#1D4ED8;
-      --blueSoft: rgba(37,99,235,.10);
-      --link:#2563EB;
+      --text: #102A2A;        /* verde carbón, más cálido que negro */
+      --muted: #5C6B6B;       /* gris verdoso */
+      --line: #E9E1D7;        /* separadores cálidos */
+
+      --accent: #0EA5A4;      /* turquesa */
+      --accent2: #0B8F8E;
+
+      --warm: #F59E0B;        /* toque cálido para badges */
+      --warmSoft: rgba(245,158,11,.14);
+
+      --radius: 18px;
+      --shadow: 0 10px 22px rgba(16, 42, 42, .06);
     }
 
     *{ box-sizing:border-box; }
@@ -34,21 +37,20 @@
 
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(900px 520px at 12% 10%, rgba(37,99,235,.08), transparent 62%),
-        radial-gradient(900px 520px at 88% 18%, rgba(99,102,241,.06), transparent 62%),
-        linear-gradient(180deg, var(--bg), var(--bgSoft));
+        radial-gradient(900px 540px at 12% 8%, rgba(14,165,164,.10), transparent 62%),
+        radial-gradient(860px 520px at 90% 12%, rgba(245,158,11,.10), transparent 60%),
+        var(--bg);
+      color: var(--text);
     }
 
-    a{ color: var(--link); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    a{ color: inherit; text-decoration:none; }
 
     .wrap{
       max-width: 980px;
       margin: 0 auto;
-      padding: 26px 16px 42px 16px;
+      padding: 22px 16px 46px;
     }
 
     .topbar{
@@ -59,8 +61,8 @@
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(8px);
       box-shadow: var(--shadow);
     }
 
@@ -72,11 +74,11 @@
     }
 
     .logo{
-      width:42px;
-      height:42px;
+      width:40px;
+      height:40px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--blue), rgba(99,102,241,1));
-      box-shadow: 0 14px 28px rgba(37,99,235,.18);
+      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.55));
+      box-shadow: 0 12px 18px rgba(14,165,164,.22);
       flex: 0 0 auto;
     }
 
@@ -88,10 +90,10 @@
 
     .brandTitle h1{
       margin:0;
-      font-size:16px;
+      font-size:15px;
       letter-spacing:.2px;
       white-space: nowrap;
-      overflow: hidden;
+      overflow:hidden;
       text-overflow: ellipsis;
     }
 
@@ -101,144 +103,155 @@
       color: var(--muted);
     }
 
-    .pill{
+    .badge{
       font-size:12px;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      background: var(--bgSoft);
+      color: #7A4A00;
+      background: var(--warmSoft);
+      border: 1px solid rgba(245,158,11,.28);
       padding: 8px 10px;
       border-radius: 999px;
       white-space: nowrap;
+      font-weight: 800;
     }
 
     .hero{
-      margin-top: 16px;
+      margin-top: 14px;
+      padding: 18px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(249,250,251,1));
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(8px);
       box-shadow: var(--shadow);
-      padding: 18px;
     }
 
     .hero h2{
-      margin:0 0 8px 0;
-      font-size:26px;
-      line-height: 1.1;
+      margin:0 0 6px 0;
+      font-size: 26px;
+      line-height:1.15;
+      letter-spacing: -0.2px;
     }
 
     .hero p{
       margin:0;
+      max-width: 72ch;
       color: var(--muted);
-      max-width: 70ch;
-      line-height: 1.5;
-      font-size:14px;
+      line-height: 1.55;
+      font-size: 14px;
     }
+
+    .heroActions{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(14,165,164,.22);
+      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.60));
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 12px 18px rgba(14,165,164,.18);
+    }
+
+    .btn:hover{ filter: brightness(.98); }
+
+    .btnGhost{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      font-weight: 800;
+    }
+
+    .btnGhost:hover{ background: rgba(255,255,255,.55); }
 
     .grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 14px;
-      margin-top: 14px;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
     }
 
-    @media (max-width: 880px){
-      .grid{ grid-template-columns: 1fr; }
+    @media (min-width: 900px){
+      .grid{
+        grid-template-columns: 1.1fr .9fr;
+        align-items:start;
+      }
     }
 
     .card{
       border: 1px solid var(--line);
-      background: var(--card);
       border-radius: var(--radius);
-      padding: 16px;
+      background: rgba(255,255,255,.92);
       box-shadow: var(--shadow);
+      padding: 16px;
     }
 
-    .card h3{
-      margin:0 0 10px 0;
-      font-size:14px;
+    .cardTitle{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+
+    .cardTitle h3{
+      margin:0;
+      font-size: 14px;
       letter-spacing:.2px;
     }
 
-    .rateBox{
+    .small{
+      font-size:12px;
+      color: var(--muted);
+    }
+
+    .rateRow{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:12px;
-      border: 1px solid var(--line);
-      background: var(--bgSoft);
-      border-radius: 16px;
       padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface2);
     }
 
     .rateValue{
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      color: var(--text);
+      font-size: 26px;
+      font-weight: 950;
+      letter-spacing:.2px;
     }
 
     .rateMeta{
+      margin-top: 4px;
       font-size: 12px;
       color: var(--muted);
-      margin-top: 4px;
     }
 
     .mono{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: rgba(17,24,39,.72);
       font-size: 12px;
+      color: rgba(16,42,42,.65);
       white-space: nowrap;
     }
 
-    .note{
-      margin: 10px 0 0 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .btnRow{
-      display:flex;
-      gap:10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .btn{
-      display:inline-block;
-      border: 1px solid rgba(37,99,235,.18);
-      background: linear-gradient(135deg, var(--blue), rgba(99,102,241,1));
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 13px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      text-decoration:none;
-      box-shadow: 0 14px 28px rgba(37,99,235,.16);
-    }
-
-    .btnGhost{
-      background: #ffffff;
-      color: var(--blue2);
-      border: 1px solid var(--line);
-      box-shadow: none;
-    }
-
-    .btnGhost:hover{
-      background: var(--bgSoft);
-      text-decoration:none;
-    }
-
-    /* CENTRADO FUERTE PARA WIDGET */
     .widgetCenter{
       width:100%;
       display:flex;
       justify-content:center;
       align-items:center;
       overflow-x:auto;
-      padding: 8px 0;
+      padding: 6px 0;
     }
-
     .widgetCenter *{
       margin-left:auto !important;
       margin-right:auto !important;
@@ -246,14 +259,86 @@
       text-align:center !important;
     }
 
-    .widgetCenter iframe{
-      display:block !important;
-      margin: 0 auto !important;
+    .compareHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
     }
 
-    .widgetCenter table{
-      margin: 0 auto !important;
+    .compareHint{
+      font-size:12px;
+      color: var(--muted);
     }
+
+    .providers{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .provider{
+      border: 1px solid var(--line);
+      background: var(--surface2);
+      border-radius: 16px;
+      padding: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .pLeft{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width: 0;
+    }
+
+    .pName{
+      font-weight: 950;
+      font-size: 14px;
+      letter-spacing:.2px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pMeta{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pRight{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex: 0 0 auto;
+    }
+
+    .pChip{
+      font-size: 12px;
+      font-weight: 900;
+      padding: 7px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(14,165,164,.18);
+      color: var(--accent2);
+      background: rgba(14,165,164,.10);
+    }
+
+    .pBtn{
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(14,165,164,.22);
+      background: var(--accent);
+      color:#fff;
+      font-weight: 950;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .pBtn:hover{ filter: brightness(.98); }
 
     footer{
       margin-top: 16px;
@@ -264,32 +349,7 @@
       display:flex;
       justify-content:space-between;
       gap:10px;
-      flex-wrap: wrap;
-    }
-
-    /* Providers (antes estaban inline con el gradiente viejo) */
-    .providerBox{
-      border:1px solid var(--line);
-      background: var(--bgSoft);
-      border-radius:16px;
-      padding:16px;
-      margin-bottom:10px;
-    }
-
-    .providerBtn{
-      padding:10px 12px;
-      border-radius:12px;
-      background: linear-gradient(135deg, var(--blue), rgba(99,102,241,1));
-      color:#fff;
-      font-weight:800;
-      text-decoration:none;
-      border: 1px solid rgba(37,99,235,.18);
-      box-shadow: 0 14px 28px rgba(37,99,235,.14);
-    }
-
-    .providerBtn:hover{
-      text-decoration:none;
-      filter: brightness(0.98);
+      flex-wrap:wrap;
     }
   </style>
 </head>
@@ -304,115 +364,115 @@
           <p>Tu mejor tasa, hoy</p>
         </div>
       </div>
-      <div class="pill">Próximamente</div>
+      <div class="badge">Comparador en camino</div>
     </header>
 
     <section class="hero">
-      <h2>Tu mejor tasa, hoy.</h2>
+      <h2>Compara rápido y elige sin enredos</h2>
       <p>
-        Estamos trabajando para mostrarte de forma clara y simple dónde pagan mejor hoy para enviar dinero a Colombia.
+        Hoy: dólar del día y accesos directos. Próximamente: comparación por monto, fees y mejor opción destacada.
       </p>
 
-      <div class="btnRow">
-        <a class="btn" href="#widget">Ver dólar</a>
-        <a class="btn btnGhost" href="#como">Cómo funciona</a>
+      <div class="heroActions">
+        <a class="btn" href="#comparar">Comparar ahora</a>
+        <a class="btn btnGhost" href="#widget">Ver dólar Colombia</a>
       </div>
     </section>
 
     <section class="grid">
-      <!-- BLOQUE 1: Frankfurter USD->COP -->
       <div class="card">
-        <h3>Tasa USD a COP</h3>
+        <div class="cardTitle">
+          <h3>Tasa USD a COP</h3>
+          <span class="small">Fuente: Frankfurter</span>
+        </div>
 
-        <div class="rateBox">
+        <div class="rateRow">
           <div>
             <div class="rateValue" id="usdCop">Cargando…</div>
             <div class="rateMeta" id="updatedAt">Actualizando</div>
           </div>
-          <div class="mono">Fuente: Frankfurter</div>
+          <div class="mono">USD → COP</div>
         </div>
 
-        <p class="note">
-          Si esta tasa aparece como no disponible, puede ser un fallo temporal del proveedor.
+        <p class="small" style="margin:10px 0 0 0;">
+          Si aparece “No disponible”, puede ser un fallo temporal. Se reintenta solo.
         </p>
       </div>
 
-      <!-- BLOQUE 2: WIDGET DÓLAR COLOMBIA -->
       <div class="card" id="widget">
-        <h3>Dólar Colombia</h3>
+        <div class="cardTitle">
+          <h3>Dólar Colombia</h3>
+          <span class="small">Widget externo</span>
+        </div>
 
         <div class="widgetCenter">
           <script src="https://www.dolar-colombia.com/widget.js"></script>
           <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
         </div>
 
-        <p class="note">Se actualiza automáticamente. Valor informativo.</p>
+        <p class="small" style="margin:10px 0 0 0;">Se actualiza automáticamente. Valor informativo.</p>
       </div>
-
-      <section class="card" style="margin-top:14px;">
-        <h3>Comparar proveedores</h3>
-
-        <!-- WESTERN UNION -->
-        <div class="providerBox">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-            <div>
-              <div style="font-weight:800;">Western Union</div>
-              <div style="opacity:.75;font-size:13px;">USD → COP</div>
-            </div>
-            <a
-              href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="providerBtn"
-            >
-              Ver tasa
-            </a>
-          </div>
-        </div>
-
-        <!-- RIA -->
-        <div class="providerBox">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-            <div>
-              <div style="font-weight:800;">Ria Money Transfer</div>
-              <div style="opacity:.75;font-size:13px;">USD → COP</div>
-            </div>
-            <a
-              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="providerBtn"
-            >
-              Ver tasa
-            </a>
-          </div>
-        </div>
-
-        <!-- REMITLY -->
-        <div class="providerBox" style="margin-bottom:0;">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-            <div>
-              <div style="font-weight:800;">Remitly</div>
-              <div style="opacity:.75;font-size:13px;">Enviar USD a COP</div>
-            </div>
-            <a
-              href="https://www.remitly.com/us/es/colombia"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="providerBtn"
-            >
-              Ver tasa
-            </a>
-          </div>
-        </div>
-      </section>
     </section>
 
-    <section class="card" id="como" style="margin-top:14px;">
-      <h3>Cómo funciona</h3>
-      <p class="note" style="font-size:13px; margin:0;">
-        En esta etapa, MiTasaYa te muestra el dólar hoy.
-        Próximamente vas a poder comparar opciones para enviar dinero a Colombia, sin enredos.
+    <section class="card" id="comparar" style="margin-top:12px;">
+      <div class="compareHeader">
+        <h3 style="margin:0;font-size:14px;letter-spacing:.2px;">Comparar proveedores</h3>
+        <div class="compareHint">Abre cada proveedor y compara en segundos</div>
+      </div>
+
+      <div class="providers">
+        <div class="provider">
+          <div class="pLeft">
+            <div class="pName">Western Union</div>
+            <div class="pMeta">USD → COP · Convertidor</div>
+          </div>
+          <div class="pRight">
+            <span class="pChip">Link directo</span>
+            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+              href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html">
+              Ver tasa
+            </a>
+          </div>
+        </div>
+
+        <div class="provider">
+          <div class="pLeft">
+            <div class="pName">Ria Money Transfer</div>
+            <div class="pMeta">USD → COP · Rate conversion</div>
+          </div>
+          <div class="pRight">
+            <span class="pChip">Link directo</span>
+            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1">
+              Ver tasa
+            </a>
+          </div>
+        </div>
+
+        <div class="provider">
+          <div class="pLeft">
+            <div class="pName">Remitly</div>
+            <div class="pMeta">Enviar USD a COP · Página Colombia</div>
+          </div>
+          <div class="pRight">
+            <span class="pChip">Link directo</span>
+            <a class="pBtn" target="_blank" rel="noopener noreferrer"
+              href="https://www.remitly.com/us/es/colombia">
+              Ver tasa
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <p class="small" style="margin:12px 0 0 0;">
+        Próximo paso: tabla por monto enviado con la mejor opción marcada.
+      </p>
+    </section>
+
+    <section class="card" id="como" style="margin-top:12px;">
+      <h3 style="margin:0 0 8px 0;font-size:14px;letter-spacing:.2px;">Cómo funciona</h3>
+      <p class="small" style="margin:0; line-height:1.6;">
+        MiTasaYa te muestra el dólar hoy y te deja comparar rápido. Próximamente vas a poder ver la tasa final estimada según el monto y fees.
       </p>
     </section>
 
@@ -436,7 +496,6 @@
 
         const data = await r.json();
         const rate = data && data.rates && data.rates.COP;
-
         if (!rate) throw new Error('no rate');
 
         const formatted = new Intl.NumberFormat('es-CO', {
@@ -454,7 +513,7 @@
     }
 
     loadUsdCop();
-    setInterval(loadUsdCop, 24 * 60 * 60 * 1000);
+    setInterval(loadUsdCop, 60 * 60 * 1000);
   </script>
 </body>
 </html>
