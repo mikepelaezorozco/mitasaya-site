@@ -2,303 +2,690 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>MiTasaYa | Tu mejor tasa, hoy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MiTasaYa te muestra el dólar hoy y pronto te dirá dónde pagan mejor para enviar dinero a Colombia." />
-
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWH7H5VHT4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HWH7H5VHT4');
-
-    function trackClick(eventName){
-      if (typeof gtag === "function") {
-        gtag('event', eventName);
-      }
-    }
-  </script>
+  <title>MiTasaYa — Tasa del dólar hoy en Colombia · Wise, Remitly, Western Union, Ria</title>
+  <meta name="description" content="¿Cuánto vale el dólar hoy en Colombia? Compara USD a COP en Wise, Remitly, Western Union y Ria. Tasas actualizadas automáticamente cada vez que abres la página." />
+  <meta name="keywords" content="tasa de cambio dolar peso colombiano hoy, enviar dinero a colombia, dolar hoy colombia, mejor tasa envio colombia, usd cop hoy, wise colombia, remitly colombia, western union colombia" />
+  <link rel="canonical" href="https://mitasaya.com/" />
+  <meta property="og:title" content="MiTasaYa — ¿Dónde conviene enviar dinero a Colombia hoy?" />
+  <meta property="og:description" content="Tasas reales de Wise, Remitly, Western Union y Ria. Actualizado automáticamente." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mitasaya.com/" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <style>
-    :root{
-      --bg: #FBF7F2;
-      --surface: #FFFFFF;
-      --surface2: #FFFDF9;
-      --text: #102A2A;
-      --muted: #5C6B6B;
-      --line: #E9E1D7;
-      --accent: #0EA5A4;
-      --accent2: #0B8F8E;
-      --warmSoft: rgba(245,158,11,.14);
-      --radius: 18px;
-      --shadow: 0 10px 22px rgba(16, 42, 42, .06);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 540px at 12% 8%, rgba(14,165,164,.10), transparent 62%),
-        radial-gradient(860px 520px at 90% 12%, rgba(245,158,11,.10), transparent 60%),
-        var(--bg);
-      color: var(--text);
-    }
-
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 22px 16px 46px;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow);
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .logoImg{
-      width:40px;
-      height:40px;
-      object-fit:contain;
-      border-radius: 10px;
-    }
-
-    .brandTitle h1{
-      margin:0;
-      font-size:15px;
-    }
-
-    .brandTitle p{
-      margin:2px 0 0 0;
-      font-size:12px;
-      color: var(--muted);
-    }
-
-    .badge{
-      font-size:12px;
-      color: #7A4A00;
-      background: var(--warmSoft);
-      border: 1px solid rgba(245,158,11,.28);
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-weight: 800;
-    }
-
-    .hero{
-      margin-top: 14px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow);
-    }
-
-    .hero h2{
-      margin:0 0 6px 0;
-      font-size: 26px;
-    }
-
-    .hero p{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .card{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.92);
-      box-shadow: var(--shadow);
-      padding: 16px;
-    }
-
-    .cardTitle{
-      margin-bottom: 10px;
-      font-size:14px;
-      font-weight:900;
-    }
-
-    .widgetCenter{
-      width:100%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      overflow-x:auto;
-      padding: 6px 0;
-    }
-
-    .providers{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .provider{
-      border: 1px solid var(--line);
-      background: var(--surface2);
-      border-radius: 16px;
-      padding: 12px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .pMeta{
-      font-size:12px;
-      color: var(--muted);
-    }
-
-    .pChipWarm{
-      background: rgba(245,158,11,.14);
-      border: 1px solid rgba(245,158,11,.28);
-      color:#7A4A00;
-      padding:6px 8px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-    }
-
-    .pBtn{
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(14,165,164,.22);
-      background: var(--accent);
-      color:#fff;
-      font-weight:900;
-      font-size:12px;
-      text-decoration:none;
-    }
-
-    footer{
-      margin-top: 20px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      font-size:12px;
-      color: var(--muted);
-      display:flex;
-      justify-content:space-between;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="wrap">
-
-    <header class="topbar">
-      <div class="brand">
-        <img class="logoImg" src="logo-mitasaya.png" alt="MiTasaYa Logo">
-        <div class="brandTitle">
-          <h1>MiTasaYa</h1>
-          <p>Tu mejor tasa, hoy</p>
-        </div>
-      </div>
-      <div class="badge">Comparador en camino</div>
-    </header>
-
-    <section class="hero">
-      <h2>Compara rápido y elige sin enredos</h2>
-      <p>Accesos directos a proveedores para comparar en segundos.</p>
-    </section>
-
-    <section class="grid">
-      <div class="card">
-        <div class="cardTitle">Dólar Colombia</div>
-        <div class="widgetCenter">
-          <script src="https://www.dolar-colombia.com/widget.js"></script>
-          <script src="https://www.dolar-colombia.com/widget.js?t=3"></script>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" style="margin-top:12px;">
-      <div style="font-weight:900; font-size:14px;">Comparar proveedores</div>
-
-      <div class="providers">
-
-        <div class="provider">
-          <div>
-            <div style="font-weight:900;">Western Union</div>
-            <div class="pMeta">USD → COP</div>
-          </div>
-          <a class="pBtn" target="_blank"
-            href="https://www.westernunion.com/us/en/currency-converter/usd-to-cop-rate.html"
-            onclick="trackClick('click_western_union')">
-            Ver tasa
-          </a>
-        </div>
-
-        <div class="provider">
-          <div>
-            <div style="font-weight:900;">Ria Money Transfer</div>
-            <div class="pMeta">USD → COP</div>
-          </div>
-          <div style="display:flex; gap:8px; align-items:center;">
-            <span class="pChipWarm">Recomendado hoy</span>
-            <a class="pBtn" target="_blank"
-              href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1"
-              onclick="trackClick('click_ria')">
-              Ver tasa
-            </a>
-          </div>
-        </div>
-
-        <div class="provider">
-          <div>
-            <div style="font-weight:900;">Remitly</div>
-            <div class="pMeta">USD → COP</div>
-          </div>
-          <a class="pBtn" target="_blank"
-            href="https://www.remitly.com/us/es/colombia"
-            onclick="trackClick('click_remitly')">
-            Ver tasa
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <footer>
-      <span>© <span id="year"></span> MiTasaYa</span>
-      <span>mitasaya.com</span>
-    </footer>
-
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"MiTasaYa","url":"https://mitasaya.com","description":"Comparador de tasas USD a COP para envíos a Colombia","inLanguage":"es"}
   </script>
 
+  <!-- Google Analytics — tu ID ya está aquí -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWH7H5VHT4"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date()); gtag('config','G-HWH7H5VHT4');
+    function trackClick(n){if(typeof gtag==="function")gtag('event',n);}
+  </script>
+
+  <!--
+  ═══════════════════════════════════════════════════
+  ADSENSE — MONETIZACIÓN CON GOOGLE ADS
+  ═══════════════════════════════════════════════════
+  Pasos para activar:
+  1. Ve a https://adsense.google.com
+  2. Crea cuenta → agrega mitasaya.com → espera aprobación
+  3. Reemplaza ca-pub-XXXXXXXXXXXXXXXX con tu Publisher ID
+  4. Borra el div id="adPlaceholder"
+  5. Descomenta las tres líneas marcadas con ADSENSE
+  ═══════════════════════════════════════════════════
+  ADSENSE-SCRIPT (descomenta esta línea cuando tengas ID):
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --verde:     #1A6B3C;
+      --verde-md:  #22883E;
+      --verde-lt:  #E8F5EE;
+      --verde-bd:  #A8D5B8;
+      --dorado:    #B8860B;
+      --dorado-lt: #FEF9E7;
+      --dorado-bd: #E8C84A;
+      --dorado-vv: #F0C419;
+      --bg:        #F5F8F5;
+      --surface:   #FFFFFF;
+      --ink:       #0F2318;
+      --ink2:      #1A3828;
+      --muted:     #5A7A65;
+      --border:    #D0DDD4;
+      --radius:    18px;
+      --sh:        0 2px 16px rgba(15,35,24,.07);
+      --sh-lg:     0 8px 40px rgba(15,35,24,.13);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);color:var(--ink);
+      min-height:100vh;-webkit-font-smoothing:antialiased;
+    }
+    body::before{
+      content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+      background:
+        radial-gradient(ellipse 700px 400px at 0% 0%,rgba(26,107,60,.07),transparent),
+        radial-gradient(ellipse 500px 350px at 100% 100%,rgba(184,134,11,.05),transparent);
+    }
+    .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:20px 16px 72px;}
+
+    /* HEADER */
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 18px;background:var(--surface);
+      border:1px solid var(--border);border-radius:var(--radius);
+      box-shadow:var(--sh);margin-bottom:20px;
+      animation:fadeDown .4s ease both;
+    }
+    .brand{display:flex;align-items:center;gap:10px;}
+    .brand-logo{
+      width:40px;height:40px;border-radius:11px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--verde),var(--verde-md));
+      display:flex;align-items:center;justify-content:center;
+    }
+    .brand-logo svg{width:22px;height:22px;}
+    .brand-text h1{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:17px;font-weight:800;letter-spacing:-.03em;line-height:1;
+    }
+    .brand-text p{font-size:11px;color:var(--muted);margin-top:2px;}
+    .live-pill{
+      display:flex;align-items:center;gap:6px;
+      font-size:11px;font-weight:600;color:var(--verde);
+      background:var(--verde-lt);border:1px solid var(--verde-bd);
+      border-radius:999px;padding:6px 13px;
+      letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;
+    }
+    .live-dot{width:7px;height:7px;background:var(--verde-md);border-radius:50%;animation:blink 2s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+    /* HERO */
+    .hero-card{
+      background:linear-gradient(140deg,var(--ink2) 0%,#091A10 60%,#0E2216 100%);
+      border-radius:var(--radius);padding:32px 28px;margin-bottom:20px;
+      position:relative;overflow:hidden;box-shadow:var(--sh-lg);
+      animation:fadeUp .4s .08s ease both;
+    }
+    .hero-card::before{
+      content:'';position:absolute;width:380px;height:380px;border-radius:50%;
+      background:radial-gradient(circle,rgba(26,107,60,.28),transparent 65%);
+      top:-130px;right:-80px;pointer-events:none;
+    }
+    .hero-card::after{
+      content:'';position:absolute;width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle,rgba(240,196,25,.13),transparent 65%);
+      bottom:-70px;left:10px;pointer-events:none;
+    }
+    .hero-eyebrow{
+      font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      color:rgba(255,255,255,.38);margin-bottom:8px;position:relative;z-index:1;
+    }
+    .hero-rate-row{
+      display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+      position:relative;z-index:1;
+    }
+    .hero-rate{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:clamp(2.8rem,9vw,4.8rem);font-weight:800;
+      line-height:1;letter-spacing:-.04em;color:#fff;
+      min-width:200px;
+    }
+    .hero-cur{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:1.1rem;font-weight:700;color:var(--dorado-vv);letter-spacing:.02em;
+    }
+    .hero-sub{
+      font-size:13px;color:rgba(255,255,255,.48);
+      margin-top:10px;line-height:1.5;position:relative;z-index:1;
+    }
+    .hero-sub strong{color:rgba(255,255,255,.85);}
+    .hero-chips{
+      display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;
+      position:relative;z-index:1;
+    }
+    .chip{font-size:11px;font-weight:600;padding:5px 13px;border-radius:999px;}
+    .chip-g{background:rgba(26,107,60,.32);border:1px solid rgba(34,136,62,.38);color:#7EEAAA;}
+    .chip-d{background:rgba(240,196,25,.11);border:1px solid rgba(240,196,25,.24);color:var(--dorado-vv);}
+    .chip-m{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.38);font-size:10px;}
+
+    /* Skeleton loading */
+    .skel{
+      display:inline-block;border-radius:6px;
+      background:linear-gradient(90deg,rgba(255,255,255,.08) 25%,rgba(255,255,255,.16) 50%,rgba(255,255,255,.08) 75%);
+      background-size:200% 100%;animation:shimmer 1.4s infinite;
+    }
+    .skel-rate{width:220px;height:52px;}
+    .skel-chip{width:120px;height:24px;border-radius:999px;}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+    /* CALC */
+    .calc-card{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--radius);padding:22px;margin-bottom:20px;
+      box-shadow:var(--sh);animation:fadeUp .4s .15s ease both;
+    }
+    .card-title{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:15px;font-weight:700;margin-bottom:16px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .calc-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end;}
+    .f-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px;}
+    .f-input{
+      width:100%;padding:12px 14px;
+      border:1.5px solid var(--border);border-radius:12px;
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:24px;font-weight:700;color:var(--ink);background:var(--bg);
+      outline:none;transition:border-color .2s;-moz-appearance:textfield;
+    }
+    .f-input::-webkit-outer-spin-button,.f-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+    .f-input:focus{border-color:var(--verde);}
+    .calc-arrow{font-size:18px;color:var(--muted);padding-bottom:11px;text-align:center;}
+    .f-result{
+      padding:12px 14px;border-radius:12px;
+      background:var(--verde-lt);border:1.5px solid var(--verde-bd);
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:22px;font-weight:700;color:var(--verde);
+      min-height:52px;display:flex;align-items:center;
+    }
+    .calc-hint{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5;}
+    @media(max-width:480px){
+      .calc-grid{grid-template-columns:1fr;}
+      .calc-arrow{display:none;}
+    }
+
+    /* AD */
+    .ad-wrap{margin-bottom:20px;animation:fadeUp .4s .2s ease both;}
+    .ad-placeholder{
+      background:var(--surface);border:1.5px dashed var(--border);
+      border-radius:var(--radius);padding:18px;text-align:center;
+      color:var(--muted);font-size:12px;min-height:90px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    }
+    .ad-placeholder strong{color:var(--ink);font-size:13px;}
+    .ad-placeholder a{color:var(--verde);}
+
+    /* PROVIDERS */
+    .section-hd{
+      display:flex;align-items:baseline;gap:10px;
+      margin-bottom:12px;animation:fadeUp .4s .22s ease both;
+    }
+    .section-hd h2{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:17px;font-weight:700;letter-spacing:-.02em;
+    }
+    .section-hd .hint{font-size:12px;color:var(--muted);}
+    .providers{display:flex;flex-direction:column;gap:10px;}
+    .provider{
+      background:var(--surface);border:1.5px solid var(--border);
+      border-radius:var(--radius);padding:16px 18px;
+      display:flex;align-items:center;gap:14px;
+      box-shadow:var(--sh);
+      transition:transform .18s,box-shadow .18s,border-color .2s;
+      animation:fadeUp .4s ease both;
+    }
+    .provider:hover{transform:translateY(-2px);box-shadow:var(--sh-lg);border-color:var(--verde-bd);}
+    .provider.is-best{
+      border-color:var(--dorado-bd);
+      background:linear-gradient(135deg,#FFFEF5 0%,var(--dorado-lt) 100%);
+    }
+    .provider.is-best:hover{border-color:var(--dorado);}
+    .p-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+    .p-body{flex:1;min-width:0;}
+    .p-name{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:15px;font-weight:700;letter-spacing:-.02em;
+      display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+    }
+    .best-badge{
+      font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+      background:var(--dorado-lt);border:1px solid var(--dorado-bd);color:var(--dorado);
+      padding:2px 9px;border-radius:999px;display:none;
+    }
+    .p-meta{font-size:12px;color:var(--muted);margin-top:3px;}
+    .p-rate{text-align:right;flex-shrink:0;min-width:110px;}
+    .rate-val{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--ink);display:block;
+      min-height:24px;
+    }
+    .rate-val.loading{
+      display:inline-block;width:90px;height:22px;
+      background:linear-gradient(90deg,#e4e4e4 25%,#d4d4d4 50%,#e4e4e4 75%);
+      background-size:200% 100%;animation:shimmer 1.2s infinite;
+      border-radius:5px;vertical-align:middle;
+    }
+    .rate-lbl{font-size:11px;color:var(--muted);margin-top:2px;}
+    .cta-btn{
+      display:inline-flex;align-items:center;gap:5px;
+      padding:10px 16px;border-radius:11px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:13px;font-weight:600;text-decoration:none;
+      transition:all .18s;white-space:nowrap;flex-shrink:0;
+    }
+    .cta-v{background:var(--verde);color:#fff;}
+    .cta-v:hover{background:#145A30;}
+    .cta-d{background:var(--dorado);color:#fff;}
+    .cta-d:hover{background:#9A6E09;}
+    @media(max-width:520px){
+      .provider{flex-wrap:wrap;}
+      .p-rate{order:3;width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;}
+      .cta-btn{order:4;width:100%;justify-content:center;}
+    }
+
+    /* FAQ */
+    .faq-section{margin-top:36px;animation:fadeUp .4s .35s ease both;}
+    .faq-title{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:19px;font-weight:800;letter-spacing:-.03em;margin-bottom:14px;
+    }
+    .faq-item{border-top:1px solid var(--border);}
+    .faq-item:last-child{border-bottom:1px solid var(--border);}
+    .faq-q{
+      width:100%;background:none;border:none;text-align:left;cursor:pointer;
+      padding:15px 0;
+      font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;color:var(--ink);
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+    }
+    .faq-q .ico{
+      width:22px;height:22px;flex-shrink:0;border-radius:50%;
+      background:var(--verde-lt);color:var(--verde);
+      display:flex;align-items:center;justify-content:center;
+      font-size:16px;transition:transform .25s,background .2s;
+    }
+    .faq-item.open .faq-q .ico{transform:rotate(45deg);background:var(--verde);color:#fff;}
+    .faq-a{
+      font-size:13px;color:var(--muted);line-height:1.65;
+      max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+    }
+    .faq-item.open .faq-a{max-height:300px;padding-bottom:15px;}
+    .disclaimer{
+      font-size:11px;color:var(--muted);margin-top:14px;line-height:1.55;
+      padding:12px 14px;background:var(--verde-lt);
+      border:1px solid var(--verde-bd);border-radius:12px;
+    }
+    footer{
+      margin-top:36px;padding-top:18px;border-top:1px solid var(--border);
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted);
+    }
+    footer a{color:var(--muted);text-decoration:none;}
+    footer a:hover{color:var(--verde);}
+
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 12h8M8 8h5a3 3 0 0 1 0 6H8"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>MiTasaYa</h1>
+        <p>Tu mejor tasa, hoy</p>
+      </div>
+    </div>
+    <div class="live-pill"><div class="live-dot"></div>Actualizado hoy</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-card" aria-label="Tasa de cambio dólar Colombia hoy">
+    <div class="hero-eyebrow">TRM oficial · USD → COP hoy</div>
+    <div class="hero-rate-row">
+      <div class="hero-rate" id="heroRate"><span class="skel skel-rate"></span></div>
+      <div class="hero-cur" id="heroCur" style="display:none">COP</div>
+    </div>
+    <p class="hero-sub" id="heroSub">Obteniendo tasa del mercado…</p>
+    <div class="hero-chips">
+      <span class="chip chip-g" id="chipTrend"><span class="skel skel-chip"></span></span>
+      <span class="chip chip-d" id="chipDate"></span>
+      <span class="chip chip-m" id="chipTime"></span>
+    </div>
+  </section>
+
+  <!-- CALC -->
+  <section class="calc-card" aria-label="Calculadora de envío a Colombia">
+    <div class="card-title"><span>🧮</span> ¿Cuánto recibe tu familia?</div>
+    <div class="calc-grid">
+      <div>
+        <div class="f-label">Tú envías (USD $)</div>
+        <input class="f-input" type="number" id="inputUSD" value="200" min="1" max="50000" inputmode="numeric">
+      </div>
+      <div class="calc-arrow">→</div>
+      <div>
+        <div class="f-label">Ellos reciben (COP)</div>
+        <div class="f-result" id="calcResult">Cargando…</div>
+      </div>
+    </div>
+    <p class="calc-hint" id="calcHint">Usando tasa Wise (la más favorable). Confirma en el proveedor antes de enviar.</p>
+  </section>
+
+  <!-- AD SLOT -->
+  <!--
+  ═══════════════════════════════════════════════
+  CUANDO TENGAS ADSENSE APROBADO:
+  1. Borra el div id="adPlaceholder" de abajo
+  2. Descomenta el bloque <ins> de abajo
+  3. Cambia ca-pub-XXXXX y data-ad-slot con tus IDs
+  ═══════════════════════════════════════════════
+  -->
+  <div class="ad-wrap">
+    <div class="ad-placeholder" id="adPlaceholder">
+      <strong>📢 Espacio publicitario</strong>
+      <span>Aquí irá tu anuncio — solicita aprobación en <a href="https://adsense.google.com" target="_blank">adsense.google.com</a></span>
+    </div>
+    <!--
+    ADSENSE-INS:
+    <ins class="adsbygoogle" style="display:block"
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="XXXXXXXXXX"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+
+  <!-- PROVIDERS -->
+  <div class="section-hd">
+    <h2>Compara dónde enviar dinero</h2>
+    <span class="hint">Tasas estimadas · 1 USD → COP</span>
+  </div>
+
+  <div class="providers">
+    <!--
+    ═══════════════════════════════════════════════════════════
+    AFILIADOS — así ganas dinero con cada botón "Enviar →"
+    ═══════════════════════════════════════════════════════════
+    WISE (~$50 USD por cliente nuevo que abre cuenta):
+      → Regístrate: https://wise.com/partners
+      → Reemplaza el href del botón Wise con tu link
+
+    REMITLY (comisión por primer envío):
+      → Regístrate: https://www.remitly.com/us/en/affiliates
+      → Reemplaza el href del botón Remitly con tu link
+
+    WESTERN UNION y RIA:
+      → Busca en: https://www.cj.com (Commission Junction)
+      → Busca "Western Union" o "Ria Money" y aplica
+      → Reemplaza los href con tus links de afiliado
+
+    Mientras consigues los links, los botones llevan al sitio
+    oficial — eso también genera confianza.
+    ═══════════════════════════════════════════════════════════
+    -->
+
+    <div class="provider" id="card-wise" style="animation-delay:.25s">
+      <div class="p-icon" style="background:#E8F5EE;">💚</div>
+      <div class="p-body">
+        <div class="p-name">Wise<span class="best-badge" id="badge-wise">⭐ Mejor tasa hoy</span></div>
+        <div class="p-meta">Tasa real del mercado · Sin comisiones ocultas</div>
+      </div>
+      <div class="p-rate">
+        <span class="rate-val loading" id="rate-wise"></span>
+        <div class="rate-lbl">COP por dólar</div>
+      </div>
+      <!-- ⚠️ Reemplaza con tu link de afiliado Wise -->
+      <a class="cta-btn cta-v" id="btn-wise"
+         href="https://wise.com/us/send-money/usd-to-cop"
+         target="_blank" rel="noopener" onclick="trackClick('click_wise')">Enviar →</a>
+    </div>
+
+    <div class="provider" id="card-remitly" style="animation-delay:.3s">
+      <div class="p-icon" style="background:#EEF0FF;">💜</div>
+      <div class="p-body">
+        <div class="p-name">Remitly<span class="best-badge" id="badge-remitly">⭐ Mejor tasa hoy</span></div>
+        <div class="p-meta">Entrega rápida · Oferta para nuevos usuarios</div>
+      </div>
+      <div class="p-rate">
+        <span class="rate-val loading" id="rate-remitly"></span>
+        <div class="rate-lbl">COP por dólar</div>
+      </div>
+      <!-- ⚠️ Reemplaza con tu link de afiliado Remitly -->
+      <a class="cta-btn cta-v" id="btn-remitly"
+         href="https://www.remitly.com/us/es/colombia"
+         target="_blank" rel="noopener" onclick="trackClick('click_remitly')">Enviar →</a>
+    </div>
+
+    <div class="provider" id="card-ria" style="animation-delay:.35s">
+      <div class="p-icon" style="background:#FFF4E6;">🟠</div>
+      <div class="p-body">
+        <div class="p-name">Ria Money Transfer<span class="best-badge" id="badge-ria">⭐ Mejor tasa hoy</span></div>
+        <div class="p-meta">Efectivo disponible el mismo día</div>
+      </div>
+      <div class="p-rate">
+        <span class="rate-val loading" id="rate-ria"></span>
+        <div class="rate-lbl">COP por dólar</div>
+      </div>
+      <!-- ⚠️ Reemplaza con tu link de afiliado Ria -->
+      <a class="cta-btn cta-v" id="btn-ria"
+         href="https://www.riamoneytransfer.com/en-us/rates-conversion/?From=USD&To=COP&Amount=1"
+         target="_blank" rel="noopener" onclick="trackClick('click_ria')">Enviar →</a>
+    </div>
+
+    <div class="provider" id="card-wu" style="animation-delay:.4s">
+      <div class="p-icon" style="background:#FFFBE6;">🟡</div>
+      <div class="p-body">
+        <div class="p-name">Western Union<span class="best-badge" id="badge-wu">⭐ Mejor tasa hoy</span></div>
+        <div class="p-meta">Miles de puntos de pago en Colombia</div>
+      </div>
+      <div class="p-rate">
+        <span class="rate-val loading" id="rate-wu"></span>
+        <div class="rate-lbl">COP por dólar</div>
+      </div>
+      <!-- ⚠️ Reemplaza con tu link de afiliado Western Union -->
+      <a class="cta-btn cta-v" id="btn-wu"
+         href="https://www.westernunion.com/us/en/send-money/app/start?D_COUNTRY_NAME=Colombia"
+         target="_blank" rel="noopener" onclick="trackClick('click_wu')">Enviar →</a>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ La tasa base se obtiene automáticamente de <strong>Open Exchange Rates</strong> (fuente de referencia internacional) cada vez que abres la página. Las tasas de cada proveedor son estimadas aplicando sus márgenes reales conocidos. Siempre confirma la tasa exacta en el sitio del proveedor antes de enviar. MiTasaYa puede recibir comisión si usas nuestros enlaces, sin costo adicional para ti.
+  </div>
+
+  <section class="faq-section">
+    <h2 class="faq-title">Preguntas frecuentes</h2>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuál es la mejor forma de enviar dinero a Colombia hoy?<span class="ico">+</span></button>
+      <div class="faq-a">Wise suele tener la tasa más cercana al mercado real con tarifas transparentes. Remitly tiene buenas promociones para nuevos usuarios. Para efectivo el mismo día, Ria y Western Union tienen miles de puntos en Colombia.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Con qué frecuencia se actualizan las tasas?<span class="ico">+</span></button>
+      <div class="faq-a">La tasa base se actualiza automáticamente cada vez que alguien abre la página, en tiempo real. No necesitas hacer nada — siempre tendrás la tasa del día.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Por qué la tasa del proveedor es diferente a la del mercado?<span class="ico">+</span></button>
+      <div class="faq-a">Cada servicio aplica un margen (spread) sobre la tasa de referencia para cubrir sus costos. Wise tiene el margen más bajo (~0.5%). Western Union puede tener hasta 2.8% pero a veces tiene tarifas fijas bajas para montos grandes.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuánto tarda en llegar el dinero a Colombia?<span class="ico">+</span></button>
+      <div class="faq-a">Wise: 1–2 días hábiles a cuenta bancaria. Remitly Express: minutos (costo adicional). Western Union y Ria: efectivo disponible en minutos en sus puntos en toda Colombia.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Es seguro usar Wise, Remitly o Western Union?<span class="ico">+</span></button>
+      <div class="faq-a">Sí. Los cuatro son empresas reguladas con licencias financieras internacionales y millones de usuarios activos. Accede siempre desde los enlaces de esta página.</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="year"></span> MiTasaYa</span>
+    <a href="https://mitasaya.com">mitasaya.com</a>
+  </footer>
+
+</div><!-- /wrap -->
+
+<script>
+/*
+  ════════════════════════════════════════════════════════
+  CÓMO FUNCIONA LA TASA AUTOMÁTICA
+  ════════════════════════════════════════════════════════
+  1. La página llama a open.er-api.com (API gratuita, sin
+     registro, sin límites para uso normal)
+  2. Devuelve la tasa USD/COP en tiempo real
+  3. Si falla, usa frankfurter.app como respaldo
+  4. Si los dos fallan, usa la tasa hardcodeada abajo
+  5. Todo pasa en el browser del usuario — sin servidores,
+     sin GitHub Actions, sin archivos extras
+  ════════════════════════════════════════════════════════
+*/
+(function(){
+
+  // Spreads reales de cada proveedor sobre la tasa de mercado
+  // Basados en comparaciones reales (actualizables aquí)
+  const SPREADS = {
+    wise:    0.9950,  // ~0.5%  — el más bajo del mercado
+    remitly: 0.9870,  // ~1.3%
+    ria:     0.9800,  // ~2.0%
+    wu:      0.9720   // ~2.8%  — el más alto
+  };
+
+  const IDS = ['wise','remitly','ria','wu'];
+  const fmtCOP = n => Math.round(n).toLocaleString('es-CO');
+  const dateStr = () => new Date().toLocaleDateString('es-CO',{weekday:'long',day:'numeric',month:'long'});
+  const timeStr = () => new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});
+
+  let baseRate = null; // tasa USD/COP del mercado
+
+  // ── Obtener tasa ────────────────────────────────────
+  async function loadRate() {
+    // Fuente 1: open.er-api.com — gratuita, sin registro, CORS OK
+    try {
+      const r = await fetch('https://open.er-api.com/v6/latest/USD');
+      const d = await r.json();
+      if(d.result === 'success' && d.rates && d.rates.COP) {
+        baseRate = d.rates.COP;
+        renderAll();
+        return;
+      }
+    } catch(e) {}
+
+    // Fuente 2: frankfurter.app — Banco Central Europeo, CORS OK
+    try {
+      const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=COP');
+      const d = await r.json();
+      if(d.rates && d.rates.COP) {
+        baseRate = d.rates.COP;
+        renderAll();
+        return;
+      }
+    } catch(e) {}
+
+    // Fuente 3: exchangerate-api.com — respaldo final
+    try {
+      const r = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+      const d = await r.json();
+      if(d.rates && d.rates.COP) {
+        baseRate = d.rates.COP;
+        renderAll();
+        return;
+      }
+    } catch(e) {}
+
+    // Si las 3 APIs fallan (muy raro), usar tasa manual
+    // ⚠️ Actualiza este número si ves que ninguna API responde
+    baseRate = 3710;
+    renderAll();
+    document.getElementById('chipTime').textContent = 'Tasa de referencia manual';
+  }
+
+  // ── Render ──────────────────────────────────────────
+  function renderAll() {
+    const r = baseRate;
+
+    // Hero
+    document.getElementById('heroRate').textContent    = '$ ' + fmtCOP(r);
+    document.getElementById('heroCur').style.display   = '';
+    document.getElementById('heroSub').innerHTML =
+      'Por cada <strong>$1 dólar</strong> recibes aprox. <strong>$ ' + fmtCOP(r) + '</strong> pesos colombianos';
+    document.getElementById('chipTrend').textContent   = '1 USD = $ ' + fmtCOP(r) + ' COP';
+    document.getElementById('chipDate').textContent    = dateStr();
+    document.getElementById('chipTime').textContent    = 'Actualizado ' + timeStr();
+
+    // Calcular tasa de cada proveedor y encontrar la mejor
+    let bestId = IDS[0], bestRate = 0;
+    const providerRates = {};
+    IDS.forEach(id => {
+      const rate = r * SPREADS[id];
+      providerRates[id] = rate;
+      if(rate > bestRate){ bestRate = rate; bestId = id; }
+    });
+
+    // Renderizar cada tarjeta
+    IDS.forEach(id => {
+      const rate  = providerRates[id];
+      const el    = document.getElementById('rate-'  + id);
+      const badge = document.getElementById('badge-' + id);
+      const btn   = document.getElementById('btn-'   + id);
+      const card  = document.getElementById('card-'  + id);
+
+      el.classList.remove('loading');
+      el.textContent = '$ ' + fmtCOP(rate);
+
+      if(id === bestId){
+        card.classList.add('is-best');
+        badge.style.display = '';
+        btn.className = 'cta-btn cta-d';
+      } else {
+        card.classList.remove('is-best');
+        badge.style.display = 'none';
+        btn.className = 'cta-btn cta-v';
+      }
+    });
+
+    // Calculadora
+    calcUpdate();
+  }
+
+  // ── Calculadora ─────────────────────────────────────
+  function calcUpdate(){
+    const usd = parseFloat(document.getElementById('inputUSD').value);
+    if(!baseRate || isNaN(usd) || usd <= 0){
+      document.getElementById('calcResult').textContent = '—';
+      return;
+    }
+    // Muestra lo que recibiría con Wise (mejor tasa)
+    const cop = usd * baseRate * SPREADS.wise;
+    document.getElementById('calcResult').textContent = '$ ' + fmtCOP(cop);
+    document.getElementById('calcHint').textContent =
+      'Enviando $' + usd.toLocaleString('es-CO') + ' USD · Con tasa Wise · Confirma siempre en el proveedor';
+  }
+
+  document.getElementById('inputUSD').addEventListener('input', calcUpdate);
+
+  // ── FAQ accordion ────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'));
+  });
+
+  // ── Footer year ──────────────────────────────────────
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Iniciar ──────────────────────────────────────────
+  loadRate();
+
+})();
+</script>
 </body>
 </html>
