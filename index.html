@@ -17,8 +17,26 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:image" content="https://mitasaya.com/logo-mitasaya.png" />
+  <meta property="og:site_name" content="MiTasaYa" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"MiTasaYa","url":"https://mitasaya.com","description":"Comparador de tasas USD a COP para envíos a Colombia","inLanguage":"es"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"MiTasaYa","url":"https://mitasaya.com","logo":"https://mitasaya.com/logo-mitasaya.png","description":"Comparador independiente de tasas y costos para enviar dinero de Estados Unidos a Colombia."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"¿Cuál es la mejor forma de enviar dinero a Colombia hoy?","acceptedAnswer":{"@type":"Answer","text":"Wise suele tener la tasa más cercana al mercado real con tarifas transparentes. Remitly tiene buenas promociones para nuevos usuarios. Para efectivo el mismo día, Ria y Western Union tienen miles de puntos en Colombia."}},
+    {"@type":"Question","name":"¿Con qué frecuencia se actualizan las tasas?","acceptedAnswer":{"@type":"Answer","text":"La tasa base se actualiza automáticamente cada vez que alguien abre la página, en tiempo real. Siempre tendrás la tasa del día."}},
+    {"@type":"Question","name":"¿Por qué la tasa del proveedor es diferente a la del mercado?","acceptedAnswer":{"@type":"Answer","text":"Cada servicio aplica un margen sobre la tasa de referencia para cubrir sus costos. Wise tiene el margen más bajo (~0.5%). Western Union puede tener hasta 2.8% pero a veces tiene tarifas fijas bajas para montos grandes."}},
+    {"@type":"Question","name":"¿Cuánto tarda en llegar el dinero a Colombia?","acceptedAnswer":{"@type":"Answer","text":"Wise: 1 a 2 días hábiles a cuenta bancaria. Remitly Express: minutos con costo adicional. Western Union y Ria: efectivo disponible en minutos en sus puntos en toda Colombia."}},
+    {"@type":"Question","name":"¿Es seguro usar Wise, Remitly o Western Union?","acceptedAnswer":{"@type":"Answer","text":"Sí. Los cuatro son empresas reguladas con licencias financieras internacionales y millones de usuarios activos."}}
+  ]}
   </script>
 
   <!-- Google Analytics — tu ID ya está aquí -->
@@ -327,6 +345,21 @@
     footer a{color:var(--muted);text-decoration:none;}
     footer a:hover{color:var(--verde);}
 
+    .guide-links{margin-top:40px;animation:fadeUp .4s .4s ease both;}
+    .guide-title{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:17px;font-weight:800;letter-spacing:-.03em;margin-bottom:14px;
+    }
+    .guide-grid{display:flex;flex-direction:column;gap:8px;}
+    .guide-grid a{
+      display:block;padding:14px 16px;background:var(--surface);
+      border:1px solid var(--border);border-radius:12px;
+      font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none;
+      transition:border-color .2s,transform .15s;
+    }
+    .guide-grid a:hover{border-color:var(--verde-bd);transform:translateX(3px);color:var(--verde);}
+    .footer-nav{display:flex;gap:14px;flex-wrap:wrap;}
+
     @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
   </style>
@@ -529,8 +562,22 @@
     </div>
   </section>
 
+  <nav class="guide-links" aria-label="Guías y comparaciones">
+    <h2 class="guide-title">Guías para enviar dinero a Colombia</h2>
+    <div class="guide-grid">
+      <a href="/wise-vs-remitly-colombia.html">Wise vs Remitly: ¿cuál conviene para Colombia?</a>
+      <a href="/cuanto-cuesta-enviar-dinero-a-colombia.html">¿Cuánto cuesta enviar dinero a Colombia?</a>
+      <a href="/como-enviar-dinero-a-colombia-primera-vez.html">Cómo enviar dinero a Colombia por primera vez</a>
+    </div>
+  </nav>
+
   <footer>
     <span>© <span id="year"></span> MiTasaYa</span>
+    <span class="footer-nav">
+      <a href="/sobre-nosotros.html">Sobre nosotros</a>
+      <a href="/privacidad.html">Privacidad</a>
+      <a href="/contacto.html">Contacto</a>
+    </span>
     <a href="https://mitasaya.com">mitasaya.com</a>
   </footer>
 
